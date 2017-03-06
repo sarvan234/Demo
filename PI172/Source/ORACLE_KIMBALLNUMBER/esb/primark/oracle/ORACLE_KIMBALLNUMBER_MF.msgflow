@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmCompute.msgnode="ComIbmCompute.msgnode" xmlns:ComIbmSOAPInput.msgnode="ComIbmSOAPInput.msgnode" xmlns:ComIbmSOAPReply.msgnode="ComIbmSOAPReply.msgnode" xmlns:ComIbmSOAPRequest.msgnode="ComIbmSOAPRequest.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="esb/primark/oracle/ORACLE_KIMBALLNUMBER_MF.msgflow" nsPrefix="esb_primark_oracle_ORACLE_KIMBALLNUMBER_MF.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="ORACLE_KIMBALLNUMBER_MF" bundleName="esb/primark/oracle/ORACLE_KIMBALLNUMBER_MF" pluginId="ORACLE_KIMBALLNUMBER"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ORACLE_KIMBALLNUMBER/icons/full/obj16/ORACLE_KIMBALLNUMBER_MF.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ORACLE_KIMBALLNUMBER/icons/full/obj30/ORACLE_KIMBALLNUMBER_MF.gif"/>
+    <shortDescription xmi:type="utility:ConstantString" string="PI172 Kimball Number"/>
+    <longDescription xmi:type="utility:ConstantString" string="Retrieval of Kimball Numbers based on Request ID and Quantity"/>
+    <version xmi:type="utility:ConstantString" string="0.3"/>
+    <composition>
+      <nodes xmi:type="ComIbmSOAPInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="14,117" wsdlFileName="GetKimballNumber.wsdl" selectedPortType="GetKimballNumber" selectedBinding="GetKimballNumberSOAP" selectedPort="GetKimballNumberSOAP" targetNamespace="http://www.primark.co.uk/GetKimballNumber/" useHTTPTransport="true" urlSelector="/kimball" parserXmlnscBuildTreeUsingXMLSchema="false" validateMaster="none">
+        <translation xmi:type="utility:ConstantString" string="KimballNumberRequest"/>
+        <shortDescription xmi:type="utility:ConstantString" string="PI172 Kimball Number - IIB Soap Input Node"/>
+        <longDescription xmi:type="utility:ConstantString" string="Parsing the Input XML file based on WSDL"/>
+      </nodes>
+      <nodes xmi:type="ComIbmSOAPRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="286,114" wsdlOperationMode="gateway" wsdlFileName="Hello.wsdl" selectedPortType="Hello_PortType" selectedBinding="Hello_Binding" selectedOperation="sayHello" selectedPort="Hello_Port" useHTTPTransport="true" webServiceURL="http://10.144.169.155:16311/ipms" sslProtocol="TLS" parserXmlnscBuildTreeUsingXMLSchema="false" validateMaster="none">
+        <translation xmi:type="utility:ConstantString" string="GetKimballNuberFromIPMS"/>
+        <shortDescription xmi:type="utility:ConstantString" string="PI 172 Kimball Number - IIB SOAP Request Node"/>
+        <longDescription xmi:type="utility:ConstantString" string="Retriving Kimball Numbers from IPMS Service"/>
+      </nodes>
+      <nodes xmi:type="ComIbmSOAPReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="600,119">
+        <translation xmi:type="utility:ConstantString" string="SendKimballNumber"/>
+        <shortDescription xmi:type="utility:ConstantString" string="PI 172 Kimball Number - IIB SOAP Reply Node"/>
+        <longDescription xmi:type="utility:ConstantString" string="Send the Kimball Numbers to the Consumer"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="172,203" computeExpression="esql://routine/esb.primark.oracle#ValidateRequest.Main" computeMode="destinationAndMessage">
+        <translation xmi:type="utility:ConstantString" string="ValidateRequest"/>
+        <shortDescription xmi:type="utility:ConstantString" string="PI172 Kimball Number - IIB Compute Node"/>
+        <longDescription xmi:type="utility:ConstantString" string="Validating Request ID and Quantity"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="478,207" computeExpression="esql://routine/esb.primark.oracle#ValidateIPMSResponse.Main">
+        <translation xmi:type="utility:ConstantString" string="ValidateIPMSResponse"/>
+        <shortDescription xmi:type="utility:ConstantString" string="PI 172 Kimball Number - IIB Compute Node"/>
+        <longDescription xmi:type="utility:ConstantString" string="Forwarding entire message to SendKimballNumber Node(SOAP Reply Node)"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.fault" targetTerminalName="InTerminal.in"/>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

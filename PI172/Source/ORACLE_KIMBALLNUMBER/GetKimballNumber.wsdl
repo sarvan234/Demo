@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="GetKimballNumber" targetNamespace="http://www.primark.co.uk/GetKimballNumber/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.primark.co.uk/GetKimballNumber/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <generatedXSD location="GetKimballNumber_InlineSchema1.xsd"/>
+        <binding hasEncoding="false" imported="true" name="GetKimballNumberSOAP" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    
+          <xsd:schema targetNamespace="http://www.primark.co.uk/GetKimballNumber/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+<xsd:include schemaLocation="GetKimballNumber_InlineSchema1.xsd"/>
+    </xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="getKimballNumbersRequest">
+    <wsdl:part element="tns:getKimballNumbers" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getKimballNumbersResponse">
+    <wsdl:part element="tns:getKimballNumbersResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="GetKimballNumber">
+    <wsdl:operation name="getKimballNumbers">
+      <wsdl:input message="tns:getKimballNumbersRequest"/>
+      <wsdl:output message="tns:getKimballNumbersResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GetKimballNumberSOAP" type="tns:GetKimballNumber">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getKimballNumbers">
+      <soap:operation soapAction="http://www.primark.co.uk/GetKimballNumber/getKimballNumbers"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GetKimballNumber">
+    <wsdl:port binding="tns:GetKimballNumberSOAP" name="GetKimballNumberSOAP">
+      <soap:address location="http://10.144.169.155:7800/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

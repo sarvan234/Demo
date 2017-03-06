@@ -1,0 +1,22 @@
+
+
+Importing file: C:\Users\1215297\Desktop\GetKimballNumber.wsdl
+
+The WSDL import will proceed with bindings GetKimballNumberSOAP.
+Creating wsdl schema document for file:///C:/Users/1215297/Desktop/GetKimballNumber.wsdl.
+Parsing wsdl binding {http://www.primark.co.uk/GetKimballNumber/}GetKimballNumberSOAP.
+Parsing wsdl binding input getKimballNumbers.
+Parsing wsdl binding output getKimballNumbers.
+Processing doc style for operation getKimballNumbers.
+Populating WSDL schema GetKimballNumber.xsd.
+Creating file GetKimballNumber.xsd in the workspace.
+Creating file GetKimballNumber_InlineSchema1.xsd in the workspace.
+Copying source WSDL GetKimballNumber.wsdl to GetKimballNumber.wsdl.
+
+Elapsed time processing this message definition file: 0.795 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+
