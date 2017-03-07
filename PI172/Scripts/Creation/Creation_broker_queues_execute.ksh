@@ -38,7 +38,7 @@ echo "       CLUSTER(MQC_L1ESB1) - " >> tmp_mqs_script.mqsc
 echo "       REPLACE" >> tmp_mqs_script.mqsc
 
 ### Creating subscriptions for interface flow in Austria POS
-
+echo " " >> tmp_mqs_script.mqsc
 echo "Define SUB('JENKINS_KIMBALL_SUB') TOPICSTR('Jenkins/$brk') DEST('JENKINS_KIMBALL') REPLACE" >> tmp_mqs_script.mqsc
 echo " " >> tmp_mqs_script.mqsc
 echo "END" >> tmp_mqs_script.mqsc
