@@ -7,6 +7,7 @@ if [[ "$#" = 0 || "$1" = '-?' || "$1" = '?' || "$1" = '-help' || "$1" = 'help' ]
 fi
  
 qmgr=$1
+brk=$2
 CENV='echo $qmgr | cut -c-2'
  
 echo " "
@@ -22,26 +23,24 @@ echo " "
  
 echo " " >> tmp_mqs_script.mqsc
 echo "DEFINE QL('JENKINS_KIMBALL') -" >> tmp_mqs_script.mqsc
-echo "       DESCR('JENKINS_TEST_DEPLOY') - " >> tmp_mqs_script.mqsc
+echo "       DESCR('JENKINS KIMBALL QUEUE') - " >> tmp_mqs_script.mqsc
 echo "       DEFPSIST(YES) - " >> tmp_mqs_script.mqsc
-echo "       BOTHRESH(0) - " >> tmp_mqs_script.mqsc
 echo "       DEFPRTY(0) - " >> tmp_mqs_script.mqsc
 echo "       MAXDEPTH(10000) - " >> tmp_mqs_script.mqsc
-echo "       MAXMSGL(104857500) - " >> tmp_mqs_script.mqsc
+echo "       MAXMSGL(4194304) - " >> tmp_mqs_script.mqsc
 echo "       QDEPTHLO(1) - " >> tmp_mqs_script.mqsc
 echo "       QDEPTHHI(10) - " >> tmp_mqs_script.mqsc
 echo "       QDPMAXEV(ENABLED) - " >> tmp_mqs_script.mqsc
 echo "       QDPHIEV(ENABLED) - " >> tmp_mqs_script.mqsc
 echo "       QDPLOEV(DISABLED) - " >> tmp_mqs_script.mqsc
 echo "       DEFBIND(NOTFIXED) - " >> tmp_mqs_script.mqsc
-echo "       CLUSTER(MQC_D1ESB1) - " >> tmp_mqs_script.mqsc
+echo "       CLUSTER(MQC_L1ESB1) - " >> tmp_mqs_script.mqsc
 echo "       REPLACE" >> tmp_mqs_script.mqsc
 echo " " >> tmp_mqs_script.mqsc
-### Creating subscriptions for interface flows in Oracle Financial Server
+
+### Creating subscriptions for interface flow in Austria POS
 
 echo "Define SUB('JENKINS_KIMBALL_SUB') TOPICSTR('Jenkins/$brk') DEST('JENKINS_KIMBALL') REPLACE" >> tmp_mqs_script.mqsc
-
 echo " " >> tmp_mqs_script.mqsc
 echo "END" >> tmp_mqs_script.mqsc
-
 runmqsc $qmgr <tmp_mqs_script.mqsc
