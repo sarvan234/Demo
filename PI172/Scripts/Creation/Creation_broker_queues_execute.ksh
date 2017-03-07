@@ -36,7 +36,6 @@ echo "       QDPLOEV(DISABLED) - " >> tmp_mqs_script.mqsc
 echo "       DEFBIND(NOTFIXED) - " >> tmp_mqs_script.mqsc
 echo "       CLUSTER(MQC_L1ESB1) - " >> tmp_mqs_script.mqsc
 echo "       REPLACE" >> tmp_mqs_script.mqsc
-echo " " >> tmp_mqs_script.mqsc
 
 ### Creating subscriptions for interface flow in Austria POS
 
