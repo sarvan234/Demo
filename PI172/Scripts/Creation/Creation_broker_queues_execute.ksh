@@ -37,7 +37,6 @@ echo "       DEFBIND(NOTFIXED) - " >> tmp_mqs_script.mqsc
 echo "       CLUSTER(MQC_D1ESB1) - " >> tmp_mqs_script.mqsc
 echo "       REPLACE" >> tmp_mqs_script.mqsc
 echo " " >> tmp_mqs_script.mqsc
-echo "END" >> tmp_mqs_script.mqsc
 ### Creating subscriptions for interface flows in Oracle Financial Server
 
 echo "Define SUB('JENKINS_KIMBALL_SUB') TOPICSTR('Jenkins/$brk') DEST('JENKINS_KIMBALL') REPLACE" >> tmp_mqs_script.mqsc
