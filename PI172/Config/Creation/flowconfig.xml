@@ -1,0 +1,340 @@
+<config>
+	<flow>
+		<flowname>esb.primark.austria.AUSTRIA_POS_DCL_MF</flowname>
+		<projectname>Austria POS</projectname>
+		<source>DCL(POS)</source>
+		<target>TERADATA</target>
+		<interface>PI171 DCL Transfer POS</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@primark.co.uk</tolist>
+		<cclist>aazharudeen@primark.co.uk</cclist>
+		<bcclist>imathy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+	<flow>
+		<flowname>esb.primark.oracle.ORACLE_KIMBALLNUMBER_MF</flowname>
+		<projectname>Kimball_Number ESB Pilot 1</projectname>
+		<source>All internal Primark consumers</source>
+		<target>IPMS</target>
+		<interface>Kimball Number</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@primark.co.uk</tolist>
+		<cclist>aazharudeen@primark.co.uk</cclist>
+		<bcclist>imathy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+	<flow>
+		<flowname>esb.primark.oracle.ORACLE_GRN_MF</flowname>
+		<projectname>GRN_SERVICE_ESB_PILOT_2</projectname>
+		<source>All internal Primark consumers</source>
+		<target>RIB</target>
+		<interface>GRN Service</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@primark.co.uk</tolist>
+		<cclist>aazharudeen@primark.co.uk</cclist>
+		<bcclist>imathy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+    <flow>
+		<flowname>esb.primark.core.CORE_GL_JOURNALS_MF</flowname>
+		<projectname>Oracle Financials</projectname>
+		<source>CORE</source>
+		<target>Oracle</target>
+		<interface>PI174 Payroll/GL_JOURNALS</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@primark.co.uk</tolist>
+		<cclist>aazharudeen@primark.co.uk</cclist>
+		<bcclist>imathy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+	<flow>
+		<flowname>esb.primark.oracle.ESB_PIAT_TAXCODES_CMF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>ORACLE</source>
+		<target>PIAT</target>
+		<interface>TaxCodes</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@primark.co.uk</tolist>
+		<cclist>aazharudeen@primark.co.uk</cclist>
+		<bcclist>imathy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+	<flow>
+		<flowname>esb.primark.oracle.ORACLE_ESB_TAXCODES_PMF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>ORACLE</source>
+		<target>PIAT</target>
+		<interface>TaxCodes</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@primark.co.uk</tolist>
+		<cclist>aazharudeen@primark.co.uk</cclist>
+		<bcclist>imathy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+    <flow>
+		<flowname>esb.primark.findur.FINDUR_GL_JOURNALS_MF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>FINDUR</source>
+		<target>ORACLE</target>
+		<interface>PI176 GL Journals</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@primark.co.uk</tolist>
+		<cclist>aazharudeen@primark.co.uk</cclist>
+		<bcclist>imathy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+	<flow>
+		<flowname>esb.primark.oracle.ESB_ORACLE_APINVOICES_CMF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>PIAT</source>
+		<target>ORACLE</target>
+		<interface>PI187 AP Invoices</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@primark.co.uk</tolist>
+		<cclist>aazharudeen@primark.co.uk</cclist>
+		<bcclist>imathy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+	<flow>
+		<flowname>esb.primark.oracle.PIAT_ESB_APINVOICES_PMF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>PIAT</source>
+		<target>ORACLE</target>
+		<interface>PI187 AP Invoices</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@primark.co.uk</tolist>
+		<cclist>aazharudeen@primark.co.uk</cclist>
+		<bcclist>imathy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+    <flow>
+		<flowname>esb.primark.oracle.ESB_PIAT_XCHG_RATES_CMF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>ORACLE</source>
+		<target>PIAT</target>
+		<interface>EXCHANGE RATES</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@primark.co.uk</tolist>
+		<cclist>aazharudeen@primark.co.uk</cclist>
+		<bcclist>imathy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+	<flow>
+		<flowname>esb.primark.oracle.ORACLE_ESB_XCHG_RATES_PMF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>ORACLE</source>
+		<target>PIAT</target>
+		<interface>EXCHANGE RATES</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@primark.co.uk</tolist>
+		<cclist>aazharudeen@primark.co.uk</cclist>
+		<bcclist>imathy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+	<flow>
+		<flowname>esb.primark.piat.PIAT_ESB_GL_JOURNALS_PMF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>PIAT</source>
+		<target>ORACLE</target>
+		<interface>PI188 GL Journals</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@primark.co.uk</tolist>
+		<cclist>aazharudeen@primark.co.uk</cclist>
+		<bcclist>imathy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+	<flow>
+		<flowname>esb.primark.piat.ESB_ORACLE_GL_JOURNALS_CMF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>PIAT</source>
+		<target>ORACLE</target>
+		<interface>PI188 GL Journals</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@primark.co.uk</tolist>
+		<cclist>aazharudeen@primark.co.uk</cclist>
+		<bcclist>imathy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+	<flow>
+		<flowname>esb.primark.oracle.ORACLE_ESB_APSUPPLIERS_PMF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>ORACLE</source>
+		<target>PIAT</target>
+		<interface>ORACLE_AP_SUPPLIERS</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@primark.co.uk</tolist>
+		<cclist>aazharudeen@primark.co.uk</cclist>
+		<bcclist>vpalanisamy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+	<flow>
+		<flowname>esb.primark.oracle.ESB_PIAT_APSUPPLIERS_CMF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>ORACLE</source>
+		<target>PIAT</target>
+		<interface>ORACLE_AP_SUPPLIERS</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@primark.co.uk</tolist>
+		<cclist>aazharudeen@primark.co.uk</cclist>
+		<bcclist>vpalanisamy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+	<flow>
+		<flowname>esb.primark.oracle.ESB_PIAT_BANK_ACCOUNTS_CMF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>ORACLE</source>
+		<target>PIAT</target>
+		<interface>ORACLE Bank Accounts</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@primark.co.uk</tolist>
+		<cclist>aazharudeen@primark.co.uk</cclist>
+		<bcclist>vpalanisamy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+    <flow>
+		<flowname>esb.primark.oracle.ORACLE_ESB_INVOICE_STATUS_PMF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>ORACLE</source>
+		<target>PIAT</target>
+		<interface>PI177 AP Payment Details</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@primark.co.uk</tolist>
+		<cclist>aazharudeen@primark.co.uk</cclist>
+		<bcclist>vpalanisamy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+	<flow>
+		<flowname>esb.primark.oracle.ESB_PIAT_INVOICE_STATUS_CMF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>ORACLE</source>
+		<target>PIAT</target>
+		<interface>PI177 AP Payment Details</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@primark.co.uk</tolist>
+		<cclist>aazharudeen@primark.co.uk</cclist>
+		<bcclist>vpalanisamy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+	<flow>
+		<flowname>esb.primark.oracle.ORACLE_ESB_APPAYMENTS_AMF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>ORACLE</source>
+		<target>PIAT</target>
+		<interface>PI177 AP Payment Details</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@primark.co.uk</tolist>
+		<cclist>aazharudeen@primark.co.uk</cclist>
+		<bcclist>vpalanisamy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+	<flow>
+		<flowname>esb.primark.oracle.ORACLE_ESB_TAXCODES_AMF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>ORACLE</source>
+		<target>PIAT</target>
+		<interface>TaxCodes</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@primark.co.uk</tolist>
+		<cclist>aazharudeen@primark.co.uk</cclist>
+		<bcclist>imathy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+	<flow>
+		<flowname>esb.primark.oracle.ORACLE_ESB_EXRATES_AMF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>ORACLE</source>
+		<target>PIAT</target>
+		<interface>EXCHANGE RATES</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@primark.co.uk</tolist>
+		<cclist>aazharudeen@primark.co.uk</cclist>
+		<bcclist>imathy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+	<flow>
+		<flowname>esb.primark.oracle.ORACLE_ESB_APSUPPLIERS_AMF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>ORACLE</source>
+		<target>PIAT</target>
+		<interface>ORACLE_AP_SUPPLIERS</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@primark.co.uk</tolist>
+		<cclist>aazharudeen@primark.co.uk</cclist>
+		<bcclist>vpalanisamy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+	<flow>
+		<flowname>esb.primark.oracle.ORACLE_ESB_COA_AMF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>ORACLE</source>
+		<target>PIAT</target>
+		<interface>PI179 ORACLE CoA</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@primark.co.uk</tolist>
+		<cclist>aazharudeen@primark.co.uk</cclist>
+		<bcclist>vpalanisamy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+	<flow>
+		<flowname>esb.primark.oracle.ORACLE_ESB_CoA_PMF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>ORACLE</source>
+		<target>PIAT</target>
+		<interface>PI179 ORACLE CoA</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@Primark.co.uk</tolist>
+		<cclist>suraja@Primark.onmicrosoft.com</cclist>
+		<bcclist>vpalanisamy@primark.co.uk</bcclist>
+		<from>admin@primark.co.uk</from>
+	</flow>
+
+	<flow>
+		<flowname>esb.primark.oracle.ESB_PIAT_CoA_ACCOUNTS_CMF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>ORACLE</source>
+		<target>PIAT</target>
+		<interface>PI179 ORACLE CoA</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@Primark.co.uk</tolist>
+		<cclist>suraja@Primark.onmicrosoft.com</cclist>
+		<bcclist>vpalanisamy@primark.co.uk</bcclist>
+	</flow>	
+
+	<flow>
+		<flowname>esb.primark.oracle.ESB_PIAT_CoA_PROJECTS_CMF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>ORACLE</source>
+		<target>PIAT</target>
+		<interface>PI179 ORACLE CoA</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@Primark.co.uk</tolist>
+		<cclist>suraja@Primark.onmicrosoft.com</cclist>
+		<bcclist>vpalanisamy@primark.co.uk</bcclist>
+	</flow>	
+
+	<flow>
+		<flowname>esb.primark.oracle.ESB_PIAT_CoA_LOCATIONS_CMF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>ORACLE</source>
+		<target>PIAT</target>
+		<interface>PI179 ORACLE CoA</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@Primark.co.uk</tolist>
+		<cclist>suraja@Primark.onmicrosoft.com</cclist>
+		<bcclist>vpalanisamy@primark.co.uk</bcclist>
+	</flow>	
+
+	<flow>
+		<flowname>esb.primark.oracle.ESB_PIAT_CoA_COSTCENTRES_CMF</flowname>		
+		<projectname>Oracle Financials</projectname>
+		<source>ORACLE</source>
+		<target>PIAT</target>
+		<interface>PI179 ORACLE CoA</interface>
+		<Severity>3</Severity>
+		<tolist>vravisankar@Primark.co.uk</tolist>
+		<cclist>suraja@Primark.onmicrosoft.com</cclist>
+		<bcclist>vpalanisamy@primark.co.uk</bcclist>
+	</flow>	
+
+
+</config>
