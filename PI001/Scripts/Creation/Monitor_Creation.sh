@@ -1,1 +1,1 @@
-fteCreateMonitor -p QDD1MFT1 -ma FTE_LOCAL_FTP -mm TEST_JENKINS -mq TEST_JENKINS -mn MONITOR_TEST_JENKINS -mt /home/mqm/MQFTE/MonitorProfile/DUMMY_APP/Task_Monitor.xml -pi 1 -pu seconds -tr CompleteGroups
+fteCreateMonitor -p QDD1MFT1 -ma FTE_LOCAL_FTP -mm QDD1MFT1 -mq TEST_JENKINS -mn MONITOR_TEST_JENKINS -mt /home/mqm/MQFTE/MonitorProfile/DUMMY_APP/Task_Monitor.xml -pi 1 -pu seconds -tr CompleteGroups
