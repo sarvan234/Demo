@@ -1,0 +1,3 @@
+fteStopAgent -p QDD1MFT1 TEST_JENKINS
+
+fteDeleteAgent -p QDD1MFT1 TEST_JENKINS -i
