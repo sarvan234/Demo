@@ -1,2 +1,1 @@
-ID = $1
-fteDeleteScheduledTransfer -agentName TEST_JENKINS <<ID>>
+fteDeleteScheduledTransfer -agentName TEST_JENKINS 4
