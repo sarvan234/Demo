@@ -14,8 +14,8 @@
          <source type="queue">
            <queue useGroups="true" groupId="${GroupId}">TEST_JENKINS</queue>
          </source>
-         <destination type="file" exist="overwrite">
-           <file>/home/mqm/Test/Output/Output.txt</file>
+         <destination type="directory" exist="overwrite">
+           <file>/home/mqm/Test/Output/</file>
          </destination>
        </item>
      </transferSet>
