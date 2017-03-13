@@ -1,1 +1,1 @@
-fteDeleteScheduledTransfer -agentName TEST_JENKINS 2
+fteDeleteScheduledTransfer -agentName TEST_JENKINS 1
