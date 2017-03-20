@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<request version="4.00" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:noNamespaceSchemaLocation="FileTransfer.xsd">
+   <managedTransfer>
+     <originator>
+       <hostName>10.150.21.40</hostName>
+       <userID>mqm</userID>
+     </originator>
+     <sourceAgent agent="FTE_CLIENT_FTP" QMgr="QDD1MFT1" />
+     <destinationAgent agent="TEST_JENKINS" QMgr="QDD1MFT1" />
+     <transferSet>
+       <item mode="binary" checksumMethod="MD5">
+         <source type="queue">
+           <queue useGroups="true" groupId="${GroupId}">TEST_JENKINS2</queue>
+         </source>
+         <destination type="directory" exist="overwrite">
+           <file>/home/mqm/Test/Output/</file>
+         </destination>
+       </item>
+     </transferSet>
+   </managedTransfer>
+</request>

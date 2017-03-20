@@ -12,7 +12,7 @@
      <transferSet>
        <item mode="binary" checksumMethod="MD5">
          <source type="queue">
-           <queue useGroups="true" groupId="${GroupId}">TEST_JENKINS</queue>
+           <queue useGroups="true" groupId="${GroupId}">TEST_JENKINS1</queue>
          </source>
          <destination type="directory" exist="overwrite">
            <file>/home/mqm/Test/Output/</file>
