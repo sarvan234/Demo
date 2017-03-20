@@ -1,1 +1,0 @@
-fteCreateTransfer -sa TEST_JENKINS -sm QDD1MFT1 -da FTE_CLIENT_FTP -dm QDD1MFT1 -sd delete -qmp true -dq TEST_JENKINS /home/mqm/Test/*.txt

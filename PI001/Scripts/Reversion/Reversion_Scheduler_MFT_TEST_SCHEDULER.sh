@@ -1,1 +1,0 @@
-fteDeleteScheduledTransfer -agentName TEST_JENKINS 1
