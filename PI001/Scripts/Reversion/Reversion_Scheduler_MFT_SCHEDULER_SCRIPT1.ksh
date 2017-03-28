@@ -1,0 +1,1 @@
+fteDeleteScheduledTransfer -agentName JENKINS_SCRIPT1 1
