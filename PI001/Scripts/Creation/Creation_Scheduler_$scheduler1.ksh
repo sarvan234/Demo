@@ -1,1 +1,0 @@
-fteCreateTransfer -p QDD1MFT1 -sa $source1 -sm $source_manager1 -da $destination_agent1 -dm $destination_manager1 -sd $disposition1 -postdst $post_destination1 -jn $scheduler1 -ss $scheduler_start1 -tb $time_base1 -oi 1 -of $frequency1 -dd $destination_directory1 $source_directory1
