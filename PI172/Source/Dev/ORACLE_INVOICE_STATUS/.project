@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>ORACLE_CoA</name>
+	<name>ORACLE_INVOICE_STATUS</name>
 	<comment></comment>
 	<projects>
-		<project>ORACLE_CoAMessageSet</project>
+		<project>ORACLE_INVOICE_STATUS_MSGSET</project>
 		<project>CallPiatService</project>
 	</projects>
 	<buildSpec>

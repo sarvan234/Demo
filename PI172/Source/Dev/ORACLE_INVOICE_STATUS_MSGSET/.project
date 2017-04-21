@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>ORACLE_CoAMessageSet</name>
+	<name>ORACLE_INVOICE_STATUS_MSGSET</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -38,6 +38,7 @@
 	</buildSpec>
 	<natures>
 		<nature>com.ibm.etools.msg.validation.msetnature</nature>
+		<nature>com.ibm.etools.mft.postV8Projects</nature>
 		<nature>com.ibm.etools.mft.bar.ext.barnature</nature>
 	</natures>
 </projectDescription>
