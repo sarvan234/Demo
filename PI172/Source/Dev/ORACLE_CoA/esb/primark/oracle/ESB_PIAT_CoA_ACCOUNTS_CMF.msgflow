@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmCompute.msgnode="ComIbmCompute.msgnode" xmlns:ComIbmMQInput.msgnode="ComIbmMQInput.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:esb_primark_piat_CallPIATService.subflow="esb/primark/piat/CallPIATService.subflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="esb/primark/oracle/ESB_PIAT_CoA_ACCOUNTS_CMF.msgflow" nsPrefix="esb_primark_oracle_ESB_PIAT_CoA_ACCOUNTS_CMF.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.LoginURL" name="LoginURL" defaultValueLiteral="http://iecwxwvdapp008/SoftCo.Bridge/api/v1/Authentication/Login">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.Password" name="Password" defaultValueLiteral="oracle-esb-1@TCS_654">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.RequestURL" name="RequestURL" defaultValueLiteral="http://iecwxwvdapp008/SoftCo.Bridge/api/v1/Ecmwrite/Indexes/oracle_esb_coa/IndexRows">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.UserName" name="UserName" defaultValueLiteral="oracle-esb-1">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <translation xmi:type="utility:TranslatableString" key="ESB_PIAT_CoA_ACCOUNTS_CMF" bundleName="esb/primark/oracle/ESB_PIAT_CoA_ACCOUNTS_CMF" pluginId="ORACLE_CoA"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ORACLE_CoA/icons/full/obj16/ESB_PIAT_CoA_ACCOUNTS_CMF.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ORACLE_CoA/icons/full/obj30/ESB_PIAT_CoA_ACCOUNTS_CMF.gif"/>
+    <shortDescription xmi:type="utility:ConstantString" string="PI179 ORACLE CoA - Accounts Consumer Flow"/>
+    <longDescription xmi:type="utility:ConstantString" string="Transforming Accounts XML data into JSON data and Sending it to PIAT Server."/>
+    <version xmi:type="utility:ConstantString" string="0.1"/>
+    <composition>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="263,147" computeExpression="esql://routine/esb.primark.oracle#TransformAccountsXMLToJSONFile.Main">
+        <translation xmi:type="utility:ConstantString" string="TransformXMLToJSONFile"/>
+        <shortDescription xmi:type="utility:ConstantString" string="PI179 ORACLE CoA - Compute Node"/>
+        <longDescription xmi:type="utility:ConstantString" string="Transformation of Accounts XML data into JSON data and Sending it to PIAT Server."/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="90,147" queueName="ESB.PIAT.COA.ACCOUNTS.IQ" messageDomainProperty="XMLNSC" transactionMode="automatic">
+        <translation xmi:type="utility:ConstantString" string="ESB.PIAT.COA.ACCOUNTS.IQ"/>
+        <shortDescription xmi:type="utility:ConstantString" string="PI179 ORACLE CoA - MQInput Node"/>
+        <longDescription xmi:type="utility:ConstantString" string="MQ Input Queue in which Account XML data are placed ."/>
+      </nodes>
+      <nodes xmi:type="esb_primark_piat_CallPIATService.subflow:FCMComposite_1" xmi:id="FCMComposite_1_1" location="449,148">
+        <translation xmi:type="utility:ConstantString" string="CallPIATService"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
+    </composition>
+    <propertyOrganizer>
+      <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.LoginURL">
+        <propertyName xmi:type="utility:TranslatableString" key="Property.LoginURL" bundleName="esb/primark/piat/CallPIATService" pluginId="CallPiatService"/>
+        <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.Password">
+          <propertyName xmi:type="utility:TranslatableString" key="Property.Password" bundleName="esb/primark/piat/CallPIATService" pluginId="CallPiatService"/>
+          <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.RequestURL">
+            <propertyName xmi:type="utility:TranslatableString" key="Property.RequestURL" bundleName="esb/primark/piat/CallPIATService" pluginId="CallPiatService"/>
+            <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.UserName">
+              <propertyName xmi:type="utility:TranslatableString" key="Property.UserName" bundleName="esb/primark/piat/CallPIATService" pluginId="CallPiatService"/>
+            </propertyDescriptor>
+          </propertyDescriptor>
+        </propertyDescriptor>
+      </propertyDescriptor>
+    </propertyOrganizer>
+    <attributeLinks promotedAttribute="Property.LoginURL" overriddenNodes="FCMComposite_1_1">
+      <overriddenAttribute href="esb/primark/piat/CallPIATService.subflow#Property.LoginURL"/>
+    </attributeLinks>
+    <attributeLinks promotedAttribute="Property.Password" overriddenNodes="FCMComposite_1_1">
+      <overriddenAttribute href="esb/primark/piat/CallPIATService.subflow#Property.Password"/>
+    </attributeLinks>
+    <attributeLinks promotedAttribute="Property.RequestURL" overriddenNodes="FCMComposite_1_1">
+      <overriddenAttribute href="esb/primark/piat/CallPIATService.subflow#Property.RequestURL"/>
+    </attributeLinks>
+    <attributeLinks promotedAttribute="Property.UserName" overriddenNodes="FCMComposite_1_1">
+      <overriddenAttribute href="esb/primark/piat/CallPIATService.subflow#Property.UserName"/>
+    </attributeLinks>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>
