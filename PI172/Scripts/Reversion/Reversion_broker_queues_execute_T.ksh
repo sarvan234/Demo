@@ -21,8 +21,10 @@ echo "Defining queues for queue manager" $qmgr
 echo " "
  
 echo " " >> tmp_mqs_script.mqsc
-echo "CLEAR  QL(TEST_JENKINS)" >> tmp_mqs_script.mqsc
-echo "DELETE QL(TEST_JENKINS)" >> tmp_mqs_script.mqsc
+echo "CLEAR  QL(JENKINS_KIMBALL)" >> tmp_mqs_script.mqsc
+echo "DELETE QL(JENKINS_KIMBALL)" >> tmp_mqs_script.mqsc
+echo " " >> tmp_mqs_script.mqsc
+echo "DELETE SUB('JENKINS_KIMBALL_SUB')">> tmp_mqs_script.mqsc 
 echo " " >> tmp_mqs_script.mqsc
 echo "END" >> tmp_mqs_script.mqsc
 runmqsc $qmgr <tmp_mqs_script.mqsc
