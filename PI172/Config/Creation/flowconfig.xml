@@ -336,5 +336,16 @@
 		<bcclist>vpalanisamy@primark.co.uk</bcclist>
 	</flow>	
 
-
+	<flow>
+		<flowname>Dummy_Flow</flowname>		
+		<projectname>Jenkins Test</projectname>
+		<source>Local</source>
+		<target>Local</target>
+		<interface>PI001 Dummy App</interface>
+		<Severity>3</Severity>
+		<tolist>suraja@Primark.onmicrosoft.com</tolist>
+		<cclist>aazharudeen@Primark.onmicrosoft.com</cclist>
+		<bcclist>vpalanisamy@primark.co.uk</bcclist>
+	</flow>	
+	
 </config>
