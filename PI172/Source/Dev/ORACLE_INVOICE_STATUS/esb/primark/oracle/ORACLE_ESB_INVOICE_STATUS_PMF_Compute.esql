@@ -1,0 +1,70 @@
+BROKER SCHEMA esb.primark.oracle
+
+/*
+* Filename ORACLE_ESB_INVOICE_STATUS_PMF_Compute.esql
+* Modulename ORACLE_ESB_INVOICE_STATUS_PMF_NonTransformedMessage
+* Interfacename PI177 AP Payment Details
+* Date        ProjectName               Name            Version   Description
+* 02/01/2017 Oracle Financials      K Abdul Azharudeen  0.1       Initial Version - Setting the topic to publish 
+* 26/01/2017 Oracle Financials      K Abdul Azharudeen  0.2       Splitting XML message into multiple messages
+* 03/03/2017 Oracle Financials      K Abdul Azharudeen  0.3       Updated the XSD as per the Defect 341
+*/
+
+CREATE COMPUTE MODULE ORACLE_ESB_INVOICE_STATUS_PMF_NonTransformedMessage
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		CALL CopyMessageHeaders();
+		--CALL CopyEntireMessage();
+		-- To set the topic
+		SET OutputRoot.Properties.Topic = 'ORACLE/APPAYMENTS/INVOICE/STATUS';
+		--Variable Declarations
+		DECLARE inRefData REFERENCE TO InputRoot.XMLNSC.INVOICES.INVOICE[1];
+		--Traversing the xml to split the message based on payments in it.
+		InvoiceLoop:WHILE LASTMOVE(inRefData) DO
+			CREATE FIELD OutputRoot.XMLNSC.INVOICE;
+			DECLARE outRefData REFERENCE TO OutputRoot.XMLNSC.INVOICE;
+			SET outRefData.VENDOR_NUM = inRefData.VENDOR_NUM;
+			SET outRefData.VENDOR_SITE_CODE = inRefData.VENDOR_SITE_CODE;
+			SET outRefData.INVOICE_NUM = inRefData.INVOICE_NUM;
+			SET outRefData.VOUCHER_NUM = inRefData.VOUCHER_NUM;
+			SET outRefData.SOURCE = inRefData.SOURCE;
+			SET outRefData.SOURCE_INVOICE_REF = inRefData.SOURCE_INVOICE_REF;
+			SET outRefData.INVOICE_STATUS = inRefData.INVOICE_STATUS;
+			SET outRefData.IMPORT_ERROR_MESSAGE = inRefData.IMPORT_ERROR_MESSAGE;
+			SET outRefData.INVOICE_TOTAL = inRefData.INVOICE_TOTAL;
+			SET outRefData.TOTAL_AMOUNT_PAID = inRefData.TOTAL_AMOUNT_PAID;
+			SET outRefData.PAID_FULLY_FLAG = inRefData.PAID_FULLY_FLAG;
+			SET outRefData.EXTRACTION_DATE = inRefData.EXTRACTION_DATE;
+
+			IF EXISTS(inRefData.PAYMENTS.PAYMENT[]) THEN
+				DECLARE inRefDataPay REFERENCE TO inRefData.PAYMENTS.PAYMENT;
+				--Traversing the PAYMENT to split the message.
+				PaymentLoop:WHILE LASTMOVE(inRefDataPay) DO
+					SET outRefData.PAYMENT = inRefDataPay;
+					PROPAGATE TO TERMINAL 'out' DELETE NONE;
+					DELETE FIELD outRefData.PAYMENT;
+					MOVE inRefDataPay NEXTSIBLING REPEAT TYPE NAME;
+			    END WHILE PaymentLoop;
+			ELSE
+		        PROPAGATE TO TERMINAL 'out' DELETE NONE;
+		    END IF;
+		    DELETE FIELD OutputRoot.XMLNSC;
+		    MOVE inRefData NEXTSIBLING REPEAT TYPE NAME;
+		END WHILE InvoiceLoop;
+	    RETURN FALSE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;
