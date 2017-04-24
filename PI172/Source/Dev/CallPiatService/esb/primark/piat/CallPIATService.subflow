@@ -8,10 +8,10 @@
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.Password" name="Password" defaultValueLiteral="oracle-esb-1@TCS_654">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.LoginURL" name="LoginURL" defaultValueLiteral="http://iecwxwvdapp008/SoftCo.Bridge/api/v1/Authentication/Login">
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.LoginURL" name="LoginURL" defaultValueLiteral="http://iecwxwvdapp013/SoftCo.Bridge/api/v1/Authentication/Login">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.RequestURL" name="RequestURL" defaultValueLiteral="http://iecwxwvdapp008/SoftCo.Bridge">
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.RequestURL" name="RequestURL" defaultValueLiteral="http://iecwxwvdapp013/SoftCo.Bridge">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
     <translation xmi:type="utility:TranslatableString" key="CallPIATService" bundleName="esb/primark/piat/CallPIATService" pluginId="CallPiatService"/>
