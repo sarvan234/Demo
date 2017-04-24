@@ -112,3 +112,153 @@ Command-line arguments:  -noupdate -os win32 -ws win32 -application com.ibm.etoo
 
 !ENTRY org.eclipse.osgi 2 1 2017-04-21 18:45:48.460
 !MESSAGE NLS unused message: DFDLXSDResourceBuilder_errorProjectReferenceIsMissing in: com.ibm.etools.msg.builder.messages
+!SESSION 2017-04-24 10:05:55.439 -----------------------------------------------
+eclipse.buildId=4.2.2.M20140918-1444
+java.fullversion=JRE 1.7.0 IBM J9 2.7 Windows 7 amd64-64 Compressed References 20150630_255653 (JIT enabled, AOT enabled)
+J9VM - R27_Java727_SR3_20150630_2236_B255653
+JIT  - tr.r13.java_20150623_94888.01
+GC   - R27_Java727_SR3_20150630_2236_B255653_CMPRSS
+J9CL - 20150630_255653
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -noupdate -application com.ibm.etools.mft.bar.cmdline.mqsicreatebar -b C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Oracle/workspace/PI172/Deployable/DUMMY_APP_24-April-2017.bar -a DUMMY_APP -l CallPiatService -deployAsSource -wmbtData
+Command-line arguments:  -noupdate -os win32 -ws win32 -application com.ibm.etools.mft.bar.cmdline.mqsicreatebar -data C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Oracle/workspace/PI172/Source/Dev -b C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Oracle/workspace/PI172/Deployable/DUMMY_APP_24-April-2017.bar -a DUMMY_APP -l CallPiatService -deployAsSource -wmbtData
+
+!ENTRY org.eclipse.core.resources 2 10035 2017-04-24 10:06:07.987
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.emf.ecore 2 0 2017-04-24 10:06:10.174
+!MESSAGE Both 'com.ibm.etools.javaee.core' and 'com.ibm.etools.mft.service.model' register an extension parser for 'application'
+
+!ENTRY org.eclipse.osgi 4 0 2017-04-24 10:06:13.586
+!MESSAGE An error occurred while automatically activating bundle org.eclipse.pde.core (1104).
+!STACK 0
+org.osgi.framework.BundleException: Exception in org.eclipse.pde.internal.core.PDECore.start() of bundle org.eclipse.pde.core.
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:734)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:683)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:381)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:300)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:440)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
+	at org.eclipse.osgi.internal.loader.SingleSourcePackage.loadClass(SingleSourcePackage.java:35)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:461)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:741)
+	at com.ibm.etools.mft.uri.udn.UDNUtils.getModelManager(UDNUtils.java:85)
+	at com.ibm.etools.mft.uri.udn.UDNUtils.populateExternalModels(UDNUtils.java:110)
+	at com.ibm.etools.mft.uri.udn.UDNUtils.<clinit>(UDNUtils.java:92)
+	at com.ibm.etools.gef.emf.utility.impl.TranslatableStringImpl.getBundle(TranslatableStringImpl.java:232)
+	at com.ibm.etools.mft.node.UDNUIUtils.<clinit>(UDNUIUtils.java:422)
+	at com.ibm.etools.mft.node.NodeToolingPlugin$RemainingInitializationJob.run(NodeToolingPlugin.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: java.lang.ExceptionInInitializerError
+	at java.lang.J9VMInternals.ensureError(J9VMInternals.java:134)
+	at java.lang.J9VMInternals.recordInitializationFailure(J9VMInternals.java:123)
+	at org.eclipse.jdt.core.JavaCore.addElementChangedListener(JavaCore.java:2782)
+	at org.eclipse.pde.internal.core.JavaElementChangeListener.start(JavaElementChangeListener.java:30)
+	at org.eclipse.pde.internal.core.PDECore.start(PDECore.java:272)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$1.run(BundleContextImpl.java:711)
+	at java.security.AccessController.doPrivileged(AccessController.java:416)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:702)
+	... 22 more
+Caused by: java.lang.NullPointerException
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.getJavaPluginWorkingLocation(IndexManager.java:451)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.getSavedIndexesDirectory(IndexManager.java:455)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.<init>(IndexManager.java:56)
+	at org.eclipse.jdt.internal.core.JavaModelManager.<init>(JavaModelManager.java:1565)
+	at org.eclipse.jdt.internal.core.JavaModelManager.<clinit>(JavaModelManager.java:1066)
+	... 28 more
+Root exception:
+java.lang.ExceptionInInitializerError
+	at java.lang.J9VMInternals.ensureError(J9VMInternals.java:134)
+	at java.lang.J9VMInternals.recordInitializationFailure(J9VMInternals.java:123)
+	at org.eclipse.jdt.core.JavaCore.addElementChangedListener(JavaCore.java:2782)
+	at org.eclipse.pde.internal.core.JavaElementChangeListener.start(JavaElementChangeListener.java:30)
+	at org.eclipse.pde.internal.core.PDECore.start(PDECore.java:272)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$1.run(BundleContextImpl.java:711)
+	at java.security.AccessController.doPrivileged(AccessController.java:416)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:702)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:683)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:381)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:300)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:440)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
+	at org.eclipse.osgi.internal.loader.SingleSourcePackage.loadClass(SingleSourcePackage.java:35)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:461)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:741)
+	at com.ibm.etools.mft.uri.udn.UDNUtils.getModelManager(UDNUtils.java:85)
+	at com.ibm.etools.mft.uri.udn.UDNUtils.populateExternalModels(UDNUtils.java:110)
+	at com.ibm.etools.mft.uri.udn.UDNUtils.<clinit>(UDNUtils.java:92)
+	at com.ibm.etools.gef.emf.utility.impl.TranslatableStringImpl.getBundle(TranslatableStringImpl.java:232)
+	at com.ibm.etools.mft.node.UDNUIUtils.<clinit>(UDNUIUtils.java:422)
+	at com.ibm.etools.mft.node.NodeToolingPlugin$RemainingInitializationJob.run(NodeToolingPlugin.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: java.lang.NullPointerException
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.getJavaPluginWorkingLocation(IndexManager.java:451)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.getSavedIndexesDirectory(IndexManager.java:455)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.<init>(IndexManager.java:56)
+	at org.eclipse.jdt.internal.core.JavaModelManager.<init>(JavaModelManager.java:1565)
+	at org.eclipse.jdt.internal.core.JavaModelManager.<clinit>(JavaModelManager.java:1066)
+	... 28 more
+
+!ENTRY org.eclipse.core.jobs 4 2 2017-04-24 10:06:13.586
+!MESSAGE An internal error occurred during: "Initializing User-defined Node framework...".
+!STACK 0
+java.lang.NoClassDefFoundError: org.eclipse.pde.internal.core.PDECore
+	at com.ibm.etools.mft.uri.udn.UDNUtils.getModelManager(UDNUtils.java:85)
+	at com.ibm.etools.mft.uri.udn.UDNUtils.populateExternalModels(UDNUtils.java:110)
+	at com.ibm.etools.mft.uri.udn.UDNUtils.<clinit>(UDNUtils.java:92)
+	at com.ibm.etools.gef.emf.utility.impl.TranslatableStringImpl.getBundle(TranslatableStringImpl.java:232)
+	at com.ibm.etools.mft.node.UDNUIUtils.<clinit>(UDNUIUtils.java:422)
+	at com.ibm.etools.mft.node.NodeToolingPlugin$RemainingInitializationJob.run(NodeToolingPlugin.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter$TerminatingClassNotFoundException: An error occurred while automatically activating bundle org.eclipse.pde.core (1104).
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:122)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
+	at org.eclipse.osgi.internal.loader.SingleSourcePackage.loadClass(SingleSourcePackage.java:35)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:461)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:741)
+	... 7 more
+Caused by: org.osgi.framework.BundleException: Exception in org.eclipse.pde.internal.core.PDECore.start() of bundle org.eclipse.pde.core.
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:734)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:683)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:381)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:300)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:440)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	... 16 more
+Caused by: java.lang.ExceptionInInitializerError
+	at java.lang.J9VMInternals.ensureError(J9VMInternals.java:134)
+	at java.lang.J9VMInternals.recordInitializationFailure(J9VMInternals.java:123)
+	at org.eclipse.jdt.core.JavaCore.addElementChangedListener(JavaCore.java:2782)
+	at org.eclipse.pde.internal.core.JavaElementChangeListener.start(JavaElementChangeListener.java:30)
+	at org.eclipse.pde.internal.core.PDECore.start(PDECore.java:272)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$1.run(BundleContextImpl.java:711)
+	at java.security.AccessController.doPrivileged(AccessController.java:416)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:702)
+	... 22 more
+Caused by: java.lang.NullPointerException
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.getJavaPluginWorkingLocation(IndexManager.java:451)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.getSavedIndexesDirectory(IndexManager.java:455)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.<init>(IndexManager.java:56)
+	at org.eclipse.jdt.internal.core.JavaModelManager.<init>(JavaModelManager.java:1565)
+	at org.eclipse.jdt.internal.core.JavaModelManager.<clinit>(JavaModelManager.java:1066)
+	... 28 more
