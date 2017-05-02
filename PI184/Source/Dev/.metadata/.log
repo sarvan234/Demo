@@ -36,3 +36,130 @@ Caused by: java.lang.IllegalStateException: BundleContext is no longer valid
 	at com.ibm.etools.mft.uri.udn.UDNUtils.populateExternalModels(UDNUtils.java:110)
 	at com.ibm.etools.mft.uri.udn.UDNUtils.<clinit>(UDNUtils.java:92)
 	... 4 more
+!SESSION 2017-05-02 15:29:23.182 -----------------------------------------------
+eclipse.buildId=4.2.2.M20140918-1444
+java.fullversion=JRE 1.7.0 IBM J9 2.7 Windows 7 amd64-64 Compressed References 20150630_255653 (JIT enabled, AOT enabled)
+J9VM - R27_Java727_SR3_20150630_2236_B255653
+JIT  - tr.r13.java_20150623_94888.01
+GC   - R27_Java727_SR3_20150630_2236_B255653_CMPRSS
+J9CL - 20150630_255653
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -noupdate -application com.ibm.etools.mft.bar.cmdline.mqsicreatebar -b C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Temp/workspace/PI184/Deployable/Dev/ORACLE_XCHG_RATES_2-May-2017.bar -a ORACLE_XCHG_RATES -l CallPiatService -deployAsSource -wmbtData
+Command-line arguments:  -noupdate -os win32 -ws win32 -application com.ibm.etools.mft.bar.cmdline.mqsicreatebar -data C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Temp/workspace/PI184/Source/Dev -b C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Temp/workspace/PI184/Deployable/Dev/ORACLE_XCHG_RATES_2-May-2017.bar -a ORACLE_XCHG_RATES -l CallPiatService -deployAsSource -wmbtData
+
+!ENTRY org.eclipse.emf.ecore 2 0 2017-05-02 15:29:25.798
+!MESSAGE Both 'com.ibm.etools.javaee.core' and 'com.ibm.etools.mft.service.model' register an extension parser for 'application'
+
+!ENTRY org.eclipse.core.runtime 4 2 2017-05-02 15:29:27.798
+!MESSAGE Problems encountered starting up plug-in: "org.osgi.framework.BundleException: The bundle's start level is not met.  Cannot transient start the bundle: org.eclipse.pde_3.8.0.v20140918-1444 [1100]".
+!STACK 0
+org.osgi.framework.BundleException: The bundle's start level is not met.  Cannot transient start the bundle: org.eclipse.pde_3.8.0.v20140918-1444 [1100]
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:315)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:300)
+	at org.eclipse.core.internal.runtime.InternalPlatform.start(InternalPlatform.java:923)
+	at org.eclipse.core.internal.plugins.PluginDescriptor.doPluginActivation(PluginDescriptor.java:360)
+	at org.eclipse.core.internal.plugins.PluginDescriptor.getPlugin(PluginDescriptor.java:340)
+	at org.eclipse.core.runtime.Platform.getPlugin(Platform.java:738)
+	at org.eclipse.core.internal.preferences.legacy.InitLegacyPreferences.init(InitLegacyPreferences.java:43)
+	at org.eclipse.core.internal.preferences.PreferenceServiceRegistryHelper.applyRuntimeDefaults(PreferenceServiceRegistryHelper.java:147)
+	at org.eclipse.core.internal.preferences.PreferencesService.applyRuntimeDefaults(PreferencesService.java:368)
+	at org.eclipse.core.internal.preferences.DefaultPreferences.applyRuntimeDefaults(DefaultPreferences.java:166)
+	at org.eclipse.core.internal.preferences.DefaultPreferences.load(DefaultPreferences.java:237)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.create(EclipsePreferences.java:409)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.internalNode(EclipsePreferences.java:663)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.node(EclipsePreferences.java:805)
+	at org.eclipse.core.internal.preferences.AbstractScope.getNode(AbstractScope.java:38)
+	at org.eclipse.core.runtime.preferences.DefaultScope.getNode(DefaultScope.java:76)
+	at org.eclipse.pde.internal.core.PreferenceInitializer.initializeDefaultPreferences(PreferenceInitializer.java:52)
+	at org.eclipse.core.internal.preferences.PreferenceServiceRegistryHelper$1.run(PreferenceServiceRegistryHelper.java:300)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.preferences.PreferenceServiceRegistryHelper.runInitializer(PreferenceServiceRegistryHelper.java:303)
+	at org.eclipse.core.internal.preferences.PreferenceServiceRegistryHelper.applyRuntimeDefaults(PreferenceServiceRegistryHelper.java:131)
+	at org.eclipse.core.internal.preferences.PreferencesService.applyRuntimeDefaults(PreferencesService.java:368)
+	at org.eclipse.core.internal.preferences.DefaultPreferences.applyRuntimeDefaults(DefaultPreferences.java:166)
+	at org.eclipse.core.internal.preferences.DefaultPreferences.load(DefaultPreferences.java:237)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.create(EclipsePreferences.java:409)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.internalNode(EclipsePreferences.java:663)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.node(EclipsePreferences.java:805)
+	at org.eclipse.core.internal.preferences.AbstractScope.getNode(AbstractScope.java:38)
+	at org.eclipse.core.runtime.preferences.DefaultScope.getNode(DefaultScope.java:76)
+	at org.eclipse.pde.internal.core.PDEPreferencesManager.<init>(PDEPreferencesManager.java:34)
+	at org.eclipse.pde.internal.core.PDECore.getPreferencesManager(PDECore.java:83)
+	at org.eclipse.pde.internal.core.ExternalModelManager.getPluginPaths(ExternalModelManager.java:90)
+	at org.eclipse.pde.internal.core.PluginModelManager.initializeTable(PluginModelManager.java:515)
+	at org.eclipse.pde.internal.core.PluginModelManager.getExternalModels(PluginModelManager.java:1027)
+	at com.ibm.etools.mft.uri.udn.UDNUtils.populateExternalModels(UDNUtils.java:110)
+	at com.ibm.etools.mft.uri.udn.UDNUtils.<clinit>(UDNUtils.java:92)
+	at com.ibm.etools.gef.emf.utility.impl.TranslatableStringImpl.getBundle(TranslatableStringImpl.java:232)
+	at com.ibm.etools.mft.node.UDNUIUtils.<clinit>(UDNUIUtils.java:422)
+	at com.ibm.etools.mft.node.NodeToolingPlugin$RemainingInitializationJob.run(NodeToolingPlugin.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException: The bundle's start level is not met.  Cannot transient start the bundle: org.eclipse.pde_3.8.0.v20140918-1444 [1100]
+	... 40 more
+Root exception:
+org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException: The bundle's start level is not met.  Cannot transient start the bundle: org.eclipse.pde_3.8.0.v20140918-1444 [1100]
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:315)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:300)
+	at org.eclipse.core.internal.runtime.InternalPlatform.start(InternalPlatform.java:923)
+	at org.eclipse.core.internal.plugins.PluginDescriptor.doPluginActivation(PluginDescriptor.java:360)
+	at org.eclipse.core.internal.plugins.PluginDescriptor.getPlugin(PluginDescriptor.java:340)
+	at org.eclipse.core.runtime.Platform.getPlugin(Platform.java:738)
+	at org.eclipse.core.internal.preferences.legacy.InitLegacyPreferences.init(InitLegacyPreferences.java:43)
+	at org.eclipse.core.internal.preferences.PreferenceServiceRegistryHelper.applyRuntimeDefaults(PreferenceServiceRegistryHelper.java:147)
+	at org.eclipse.core.internal.preferences.PreferencesService.applyRuntimeDefaults(PreferencesService.java:368)
+	at org.eclipse.core.internal.preferences.DefaultPreferences.applyRuntimeDefaults(DefaultPreferences.java:166)
+	at org.eclipse.core.internal.preferences.DefaultPreferences.load(DefaultPreferences.java:237)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.create(EclipsePreferences.java:409)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.internalNode(EclipsePreferences.java:663)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.node(EclipsePreferences.java:805)
+	at org.eclipse.core.internal.preferences.AbstractScope.getNode(AbstractScope.java:38)
+	at org.eclipse.core.runtime.preferences.DefaultScope.getNode(DefaultScope.java:76)
+	at org.eclipse.pde.internal.core.PreferenceInitializer.initializeDefaultPreferences(PreferenceInitializer.java:52)
+	at org.eclipse.core.internal.preferences.PreferenceServiceRegistryHelper$1.run(PreferenceServiceRegistryHelper.java:300)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.preferences.PreferenceServiceRegistryHelper.runInitializer(PreferenceServiceRegistryHelper.java:303)
+	at org.eclipse.core.internal.preferences.PreferenceServiceRegistryHelper.applyRuntimeDefaults(PreferenceServiceRegistryHelper.java:131)
+	at org.eclipse.core.internal.preferences.PreferencesService.applyRuntimeDefaults(PreferencesService.java:368)
+	at org.eclipse.core.internal.preferences.DefaultPreferences.applyRuntimeDefaults(DefaultPreferences.java:166)
+	at org.eclipse.core.internal.preferences.DefaultPreferences.load(DefaultPreferences.java:237)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.create(EclipsePreferences.java:409)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.internalNode(EclipsePreferences.java:663)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.node(EclipsePreferences.java:805)
+	at org.eclipse.core.internal.preferences.AbstractScope.getNode(AbstractScope.java:38)
+	at org.eclipse.core.runtime.preferences.DefaultScope.getNode(DefaultScope.java:76)
+	at org.eclipse.pde.internal.core.PDEPreferencesManager.<init>(PDEPreferencesManager.java:34)
+	at org.eclipse.pde.internal.core.PDECore.getPreferencesManager(PDECore.java:83)
+	at org.eclipse.pde.internal.core.ExternalModelManager.getPluginPaths(ExternalModelManager.java:90)
+	at org.eclipse.pde.internal.core.PluginModelManager.initializeTable(PluginModelManager.java:515)
+	at org.eclipse.pde.internal.core.PluginModelManager.getExternalModels(PluginModelManager.java:1027)
+	at com.ibm.etools.mft.uri.udn.UDNUtils.populateExternalModels(UDNUtils.java:110)
+	at com.ibm.etools.mft.uri.udn.UDNUtils.<clinit>(UDNUtils.java:92)
+	at com.ibm.etools.gef.emf.utility.impl.TranslatableStringImpl.getBundle(TranslatableStringImpl.java:232)
+	at com.ibm.etools.mft.node.UDNUIUtils.<clinit>(UDNUIUtils.java:422)
+	at com.ibm.etools.mft.node.NodeToolingPlugin$RemainingInitializationJob.run(NodeToolingPlugin.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.core.jobs 4 2 2017-05-02 15:29:27.827
+!MESSAGE An internal error occurred during: "Initializing User-defined Node framework...".
+!STACK 0
+java.lang.ExceptionInInitializerError
+	at java.lang.J9VMInternals.ensureError(J9VMInternals.java:134)
+	at java.lang.J9VMInternals.recordInitializationFailure(J9VMInternals.java:123)
+	at com.ibm.etools.gef.emf.utility.impl.TranslatableStringImpl.getBundle(TranslatableStringImpl.java:232)
+	at com.ibm.etools.mft.node.UDNUIUtils.<clinit>(UDNUIUtils.java:422)
+	at com.ibm.etools.mft.node.NodeToolingPlugin$RemainingInitializationJob.run(NodeToolingPlugin.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: java.lang.IllegalStateException: BundleContext is no longer valid
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.checkValid(BundleContextImpl.java:931)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.getServiceReference(BundleContextImpl.java:528)
+	at org.eclipse.pde.internal.core.PDECore.acquireService(PDECore.java:369)
+	at org.eclipse.pde.internal.core.P2Utils.getBundlesFromFile(P2Utils.java:181)
+	at org.eclipse.pde.internal.core.P2Utils.readBundles(P2Utils.java:111)
+	at org.eclipse.pde.internal.core.P2Utils.readBundlesTxt(P2Utils.java:70)
+	at org.eclipse.pde.internal.core.PluginPathFinder.getPluginPaths(PluginPathFinder.java:110)
+	at org.eclipse.pde.internal.core.ExternalModelManager.getPluginPaths(ExternalModelManager.java:100)
+	at org.eclipse.pde.internal.core.PluginModelManager.initializeTable(PluginModelManager.java:515)
+	at org.eclipse.pde.internal.core.PluginModelManager.getExternalModels(PluginModelManager.java:1027)
+	at com.ibm.etools.mft.uri.udn.UDNUtils.populateExternalModels(UDNUtils.java:110)
+	at com.ibm.etools.mft.uri.udn.UDNUtils.<clinit>(UDNUtils.java:92)
+	... 4 more
