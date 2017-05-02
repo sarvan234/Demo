@@ -1,0 +1,208 @@
+/*
+* Filename 	 ORACLE_ESB_CoA_PMF.esql
+* Modulename SourceToCDM
+* Interfacename PI179 ORACLE_CoA
+* Date	      ProjectName       Name		    Version		    Description
+* 26/01/2017  ORACLE_CoA	 G Sugumar Raja		  0.1 	 Initial Version - Converting Source Location Data 
+														 to CDM Format and Publishing Rest of CoA Data
+														 to their Respective Consumer Flows. 
+* 04/07/2017  ORACLE_CoA	G Sugumar Raja		  0.2 	 Splitting the CoA Messages based on Business_Units Entity
+														 and Publishing Locations details with every Business_Units
+														 to a separate queue as per the DOMD (v0.11)												 
+*/ 
+
+BROKER SCHEMA esb.primark.oracle
+
+
+CREATE COMPUTE MODULE SourceToCDM
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		 CALL CopyMessageHeaders();
+--		 CALL CopyEntireMessage();
+			
+		 	-- Variables Declaration 
+         DECLARE inRef REFERENCE TO InputRoot.XMLNSC.CHART_OF_ACCOUNTS;
+         DECLARE seqId INTEGER 0;
+         	-- Converting Locations data from XML Format to CDM Format and Publishing it to its Respective Consumer flow.
+		 IF EXISTS(inRef.LOCATIONS[]) THEN	
+		 	IF EXISTS(inRef.LOCATIONS.LOCATION[] ) THEN
+		 	
+		 	 DECLARE locRef REFERENCE TO inRef.LOCATIONS.LOCATION;
+			
+			LocationsLoop: WHILE LASTMOVE (locRef) DO
+				SET OutputRoot.MQRFH2.psc.Topic = 'ORACLE/MASTERDATA/COA/LOCATIONSPerBU' ;
+		 		CREATE FIELD OutputRoot.XMLNSC.Location.Header;
+	         	CREATE FIELD OutputRoot.XMLNSC.Location.Payload.Site;
+	         	DECLARE headRef REFERENCE TO OutputRoot.XMLNSC.Location.Header;
+			 	DECLARE payloadRef REFERENCE TO OutputRoot.XMLNSC.Location.Payload.Site;
+			 	
+		 		SET headRef.EnvelopeVersion = 0.1 ; 
+			 	SET headRef.MessageId = locRef.EXTRACTION_DATE || '-' || locRef.ORACLE_LOCATION_CODE ; 
+			 	SET headRef.CreatedTimestamp = locRef.EXTRACTION_DATE; 
+			 	SET seqId = seqId + 1;
+			 	SET headRef.SequenceId = CAST (seqId AS CHARACTER) ;
+			 	SET headRef.SourceApplicationName = 'ORACLE' ;
+			 	SET headRef.InterfaceId = 'PI179' ;
+			 	SET headRef.InterfaceName = 'CoA-Locations' ;
+			 	SET headRef.PayloadName = 'Site' ;
+			 	
+			 	SET payloadRef.SiteId = locRef.ORACLE_LOCATION_CODE;
+			 	SET payloadRef.SiteDesc = locRef.DESCRIPTION;
+			 	SET payloadRef.EnabledFlag = locRef.ENABLED_FLAG;
+			 	SET payloadRef.OpenDate = CAST (NULLIF(locRef.START_DATE_ACTIVE,'') AS DATE FORMAT 'yyyy-MM-dd' );
+			 	SET payloadRef.ClosingDate = CAST (NULLIF(locRef.END_DATE_ACTIVE,'') AS DATE FORMAT 'yyyy-MM-dd' );
+			 	SET payloadRef.SunLoc = locRef.SUN_LOCATION;
+			 	DECLARE paybuRef REFERENCE TO locRef.BUSINESS_UNITS.BUSINESS_UNIT;
+		 	    PAYBULOOP:WHILE LASTMOVE(paybuRef) DO
+			 	   SET payloadRef.BusinessUnitSite.BusinessUnitEntity = paybuRef.ENTITY;
+			 	   SET payloadRef.BusinessUnitSite.BusinessUnitEnabled = paybuRef.ENABLED;
+			 	   SET Environment.Variables.UniqueId = headRef.MessageId  ;	 -- For Audit Purpose.
+			 	   PROPAGATE TO TERMINAL 'out' DELETE NONE;
+			 	   DELETE FIELD payloadRef.BusinessUnitSite;
+			 	   MOVE paybuRef NEXTSIBLING REPEAT TYPE NAME;
+		 	    END WHILE PAYBULOOP;
+		 	    
+		 	    CREATE FIELD payloadRef.BusinessUnitsSite ;
+		 	    DECLARE buRef REFERENCE TO payloadRef.BusinessUnitsSite ;
+		 	    DECLARE locbuRef REFERENCE TO locRef.BUSINESS_UNITS.BUSINESS_UNIT; 
+		 	    BULOOP:WHILE LASTMOVE(locbuRef) DO
+		 	       CREATE LASTCHILD OF buRef AS buRef NAME 'BusinessUnitSite' ;
+			 	   SET buRef.BusinessUnitEntity = locbuRef.ENTITY;
+			 	   SET buRef.BusinessUnitEnabled = locbuRef.ENABLED;
+			 	   SET Environment.Variables.UniqueId = headRef.MessageId  ;	 -- For Audit Purpose.
+			 	   MOVE buRef PARENT;
+			 	  MOVE locbuRef NEXTSIBLING REPEAT TYPE NAME;
+		 	    END WHILE BULOOP;
+			 	SET OutputRoot.MQRFH2.psc.Topic = 'ORACLE/MASTERDATA/COA/LOCATIONS' ;
+			 	PROPAGATE TO TERMINAL 'out' DELETE NONE;
+		 	    DELETE FIELD OutputRoot.XMLNSC.Location;
+			 	MOVE locRef NEXTSIBLING REPEAT TYPE NAME ;
+		      END WHILE LocationsLoop;
+		 
+		  END IF;
+		 END IF ;
+		  	   
+		 		-- Publishing Accounts Data to its Respective Consumer Flow.
+		 	IF EXISTS(inRef.ACCOUNTS[]) THEN
+		 	  IF EXISTS(inRef.ACCOUNTS.ACCOUNT[] ) THEN
+				
+			   DECLARE inaccountRef REFERENCE TO inRef.ACCOUNTS.ACCOUNT;
+			   SET OutputRoot.MQRFH2.psc.Topic = 'ORACLE/MASTERDATA/COA/ACCOUNTS' ;
+			   
+		 	   AccountsLoop: WHILE LASTMOVE (inaccountRef) DO
+		 	   CREATE FIELD OutputRoot.XMLNSC.ACCOUNT;	
+		 	   DECLARE accountRef REFERENCE TO OutputRoot.XMLNSC.ACCOUNT;
+		 	   SET accountRef.ORACLE_ACCOUNT_CODE = inaccountRef.ORACLE_ACCOUNT_CODE;
+		 	   SET accountRef.DESCRIPTION = inaccountRef.DESCRIPTION;
+		 	   SET accountRef.ENABLED_FLAG = inaccountRef.ENABLED_FLAG;
+		 	   SET accountRef.START_DATE_ACTIVE = CAST(NULLIF(inaccountRef.START_DATE_ACTIVE,'') AS DATE FORMAT 'yyyy-MM-dd' );
+		 	   SET accountRef.END_DATE_ACTIVE = CAST(NULLIF(inaccountRef.END_DATE_ACTIVE,'') AS DATE FORMAT 'yyyy-MM-dd' );
+		 	   SET accountRef.ACCOUNT_TYPE = inaccountRef.ACCOUNT_TYPE;
+		 	   SET accountRef.SUN_ACCOUNT_CODE = inaccountRef.SUN_ACCOUNT_CODE;
+		 	   SET accountRef.EXTRACTION_DATE = inaccountRef.EXTRACTION_DATE;
+		 	   DECLARE buRef REFERENCE TO inaccountRef.BUSINESS_UNITS.BUSINESS_UNIT;
+		 	   BULOOP:WHILE LASTMOVE(buRef) DO
+			 	   SET accountRef.BUSINESS_UNIT.ENTITY = buRef.ENTITY;
+			 	   SET accountRef.BUSINESS_UNIT.ENABLED = buRef.ENABLED;
+			 	   SET Environment.Variables.UniqueId = inaccountRef.EXTRACTION_DATE  ;	 -- For Audit Purpose.
+			 	   PROPAGATE TO TERMINAL 'out' DELETE NONE;
+			 	   DELETE FIELD accountRef.BUSINESS_UNIT;
+			 	   MOVE buRef NEXTSIBLING REPEAT TYPE NAME;
+		 	   END WHILE BULOOP;
+			   DELETE FIELD OutputRoot.XMLNSC.ACCOUNT;
+			   MOVE inaccountRef NEXTSIBLING REPEAT TYPE NAME;
+			   END WHILE AccountsLoop;
+			   
+			 END IF;
+		 	END IF;
+		 	
+		 		-- Publishing Projects Data to its Respective Consumer Flow.
+			IF EXISTS(inRef.PROJECTS[]) THEN
+			  IF EXISTS(inRef.PROJECTS.PROJECT[] ) THEN
+			   
+			   DELETE FIELD OutputRoot.XMLNSC;
+			   DECLARE inprojectRef REFERENCE TO inRef.PROJECTS.PROJECT;
+			   SET OutputRoot.MQRFH2.psc.Topic = 'ORACLE/MASTERDATA/COA/PROJECTS' ;
+			   
+			   ProjectsLoop: WHILE LASTMOVE (inprojectRef) DO
+			   CREATE FIELD OutputRoot.XMLNSC.PROJECT;	
+		 	   DECLARE projectRef REFERENCE TO OutputRoot.XMLNSC.PROJECT;
+			   SET projectRef.ORACLE_PROJECT_CODE = inprojectRef.ORACLE_PROJECT_CODE;	
+			   SET projectRef.DESCRIPTION = inprojectRef.DESCRIPTION;
+			   SET projectRef.ENABLED_FLAG = inprojectRef.ENABLED_FLAG;
+			   SET projectRef.START_DATE_ACTIVE = CAST(NULLIF(inprojectRef.START_DATE_ACTIVE,'') AS DATE FORMAT 'yyyy-MM-dd' );
+			   SET projectRef.END_DATE_ACTIVE = CAST(NULLIF(inprojectRef.END_DATE_ACTIVE,'') AS DATE FORMAT 'yyyy-MM-dd' );
+			   SET projectRef.SUN_PROJECT = inprojectRef.SUN_PROJECT;
+			   SET projectRef.CIP_FLAG = inprojectRef.CIP_FLAG;
+			   SET projectRef.EXTRACTION_DATE = inprojectRef.EXTRACTION_DATE;
+			   DECLARE buRef REFERENCE TO inprojectRef.BUSINESS_UNITS.BUSINESS_UNIT;
+		 	   BULOOP:WHILE LASTMOVE(buRef) DO
+			 	   SET projectRef.BUSINESS_UNIT.ENTITY = buRef.ENTITY;
+			 	   SET projectRef.BUSINESS_UNIT.ENABLED = buRef.ENABLED;
+			 	   SET Environment.Variables.UniqueId = inprojectRef.EXTRACTION_DATE  ;	 -- For Audit Purpose.
+			 	   PROPAGATE TO TERMINAL 'out' DELETE NONE;
+			 	   DELETE FIELD projectRef.BUSINESS_UNIT;
+			 	   MOVE buRef NEXTSIBLING REPEAT TYPE NAME;
+		 	   END WHILE BULOOP;
+			   DELETE FIELD OutputRoot.XMLNSC.PROJECT;
+			   MOVE inprojectRef NEXTSIBLING REPEAT TYPE NAME;
+			   END WHILE ProjectsLoop;
+			  END IF;
+			END IF;
+		 	
+		 		-- Publishing CostCentre Data to its Respective Consumer Flow.
+		 	IF EXISTS(inRef.COST_CENTRES[]) THEN
+		 	  IF EXISTS(inRef.COST_CENTRES.COST_CENTRE[]) THEN
+				
+			   DELETE FIELD OutputRoot.XMLNSC;
+			   DECLARE incostRef REFERENCE TO inRef.COST_CENTRES.COST_CENTRE;
+			   SET OutputRoot.MQRFH2.psc.Topic = 'ORACLE/MASTERDATA/COA/COSTCENTRES' ;
+			   
+			   CostcentresLoop: WHILE LASTMOVE (incostRef) DO
+			   CREATE FIELD OutputRoot.XMLNSC.COST_CENTRE;	
+		 	   DECLARE costcentreRef REFERENCE TO OutputRoot.XMLNSC.COST_CENTRE;
+			   SET costcentreRef.ORACLE_COST_CENTRE_CODE = incostRef.ORACLE_COST_CENTRE_CODE;	
+			   SET costcentreRef.DESCRIPTION = incostRef.DESCRIPTION;	
+			   SET costcentreRef.ENABLED_FLAG = incostRef.ENABLED_FLAG;	
+			   SET costcentreRef.START_DATE_ACTIVE = CAST(NULLIF(incostRef.START_DATE_ACTIVE,'') AS DATE FORMAT 'yyyy-MM-dd' );	
+			   SET costcentreRef.END_DATE_ACTIVE = CAST(NULLIF(incostRef.END_DATE_ACTIVE,'') AS DATE FORMAT 'yyyy-MM-dd' );	
+			   SET costcentreRef.SUN_COST_CENTRE = incostRef.SUN_COST_CENTRE;	
+			   SET costcentreRef.EXTRACTION_DATE = incostRef.EXTRACTION_DATE;	
+			   DECLARE buRef REFERENCE TO incostRef.BUSINESS_UNITS.BUSINESS_UNIT;
+		 	   BULOOP:WHILE LASTMOVE(buRef) DO
+			 	   SET costcentreRef.BUSINESS_UNIT.ENTITY = buRef.ENTITY;
+			 	   SET costcentreRef.BUSINESS_UNIT.ENABLED = buRef.ENABLED;
+			 	   SET Environment.Variables.UniqueId = incostRef.EXTRACTION_DATE  ;	 -- For Audit Purpose.
+			 	   PROPAGATE TO TERMINAL 'out' DELETE NONE;
+			 	   DELETE FIELD costcentreRef.BUSINESS_UNIT;
+			 	   MOVE buRef NEXTSIBLING REPEAT TYPE NAME;
+		 	   END WHILE BULOOP;
+			   DELETE FIELD OutputRoot.XMLNSC.COST_CENTRE;
+			   MOVE incostRef NEXTSIBLING REPEAT TYPE NAME;
+			   END WHILE CostcentresLoop;
+		 	  END IF;
+			END IF;
+		 	
+		 	-- To Send the Whole File to the Subscribed Queue.
+			DELETE FIELD OutputRoot.XMLNSC;
+		 	SET OutputRoot.MQRFH2.psc.Topic = 'ORACLE/MASTERDATA/COA' ;
+			SET OutputRoot.XMLNSC = InputRoot.XMLNSC ;
+			PROPAGATE TO TERMINAL 'out' DELETE NONE ;
+		
+		RETURN FALSE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;
