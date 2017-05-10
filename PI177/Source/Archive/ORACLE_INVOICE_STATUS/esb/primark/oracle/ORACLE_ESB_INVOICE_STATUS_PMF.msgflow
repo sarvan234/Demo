@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmCompute.msgnode="ComIbmCompute.msgnode" xmlns:ComIbmMQInput.msgnode="ComIbmMQInput.msgnode" xmlns:ComIbmPublication.msgnode="ComIbmPublication.msgnode" xmlns:ComIbmValidate.msgnode="ComIbmValidate.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="esb/primark/oracle/ORACLE_ESB_INVOICE_STATUS_PMF.msgflow" nsPrefix="esb_primark_oracle_ORACLE_ESB_INVOICE_STATUS_PMF.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="ORACLE_ESB_INVOICE_STATUS_PMF" bundleName="esb/primark/oracle/ORACLE_ESB_INVOICE_STATUS_PMF" pluginId="ORACLE_INVOICE_STATUS"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ORACLE_INVOICE_STATUS/icons/full/obj16/ORACLE_ESB_INVOICE_STATUS_PMF.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ORACLE_INVOICE_STATUS/icons/full/obj30/ORACLE_ESB_INVOICE_STATUS_PMF.gif"/>
+    <shortDescription xmi:type="utility:ConstantString" string="PI177 AP Payment Details - Publisher Flow"/>
+    <longDescription xmi:type="utility:ConstantString" string="To split the incoming message and publish the splitted messages in specific topic."/>
+    <version xmi:type="utility:ConstantString" string="0.2"/>
+    <composition>
+      <nodes xmi:type="ComIbmPublication.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="575,211">
+        <translation xmi:type="utility:ConstantString" string="PublishMessage"/>
+        <shortDescription xmi:type="utility:ConstantString" string="PI177 AP Payment Details - Publication node"/>
+        <longDescription xmi:type="utility:ConstantString" string="To publish the message in the specified topic."/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="17,206" queueName="ORACLE.ESB.INVOICE.STATUS" messageDomainProperty="XMLNSC" messageSetProperty="ORACLE_INVOICE_STATUS_MSGSET">
+        <translation xmi:type="utility:ConstantString" string="ORACLE.ESB.INVOICE.STATUS"/>
+        <shortDescription xmi:type="utility:ConstantString" string="PI177 AP Payment Details - MQInput Node"/>
+        <longDescription xmi:type="utility:ConstantString" string="To get the input message to process."/>
+      </nodes>
+      <nodes xmi:type="ComIbmValidate.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="250,206" domain="XMLNSC" checkDomain="true" set="ORACLE_INVOICE_STATUS_MSGSET" checkSet="true" validateMaster="contentAndValue">
+        <translation xmi:type="utility:ConstantString" string="SourceValidation"/>
+        <shortDescription xmi:type="utility:ConstantString" string="PI177 AP Payment Details - Validate Node"/>
+        <longDescription xmi:type="utility:ConstantString" string="To validate the input message against the given schema."/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="410,210" computeExpression="esql://routine/esb.primark.oracle#ORACLE_ESB_INVOICE_STATUS_PMF_NonTransformedMessage.Main">
+        <translation xmi:type="utility:ConstantString" string="NonTransformedMessage"/>
+        <shortDescription xmi:type="utility:ConstantString" string="PI177 AP Payment Details - Compute node"/>
+        <longDescription xmi:type="utility:ConstantString" string="To set the topic properties to publish and split the xml message."/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.match" targetTerminalName="InTerminal.in"/>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,97 @@
+!SESSION 2017-04-25 16:30:54.662 -----------------------------------------------
+eclipse.buildId=4.2.2.M20140918-1444
+java.fullversion=JRE 1.7.0 IBM J9 2.7 Windows 7 amd64-64 Compressed References 20150630_255653 (JIT enabled, AOT enabled)
+J9VM - R27_Java727_SR3_20150630_2236_B255653
+JIT  - tr.r13.java_20150623_94888.01
+GC   - R27_Java727_SR3_20150630_2236_B255653_CMPRSS
+J9CL - 20150630_255653
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -noupdate -application com.ibm.etools.mft.bar.cmdline.mqsicreatebar -b C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Oracle/workspace/PI177/Deployable/Test2/ORACLE_INVOICE_STATUS_25-April-2017.bar -a ORACLE_INVOICE_STATUS -l CallPiatService -deployAsSource -wmbtData
+Command-line arguments:  -noupdate -os win32 -ws win32 -application com.ibm.etools.mft.bar.cmdline.mqsicreatebar -data C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Oracle/workspace/PI177/Source/Test2 -b C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Oracle/workspace/PI177/Deployable/Test2/ORACLE_INVOICE_STATUS_25-April-2017.bar -a ORACLE_INVOICE_STATUS -l CallPiatService -deployAsSource -wmbtData
+
+!ENTRY org.eclipse.emf.ecore 2 0 2017-04-25 16:30:58.418
+!MESSAGE Both 'com.ibm.etools.javaee.core' and 'com.ibm.etools.mft.service.model' register an extension parser for 'application'
+
+!ENTRY org.eclipse.osgi 2 1 2017-04-25 16:31:27.707
+!MESSAGE NLS missing message: Messages_EnumValue_BlockFinal_empty in: com.ibm.etools.msg.coremodel.utilities.messages
+
+!ENTRY org.eclipse.osgi 2 1 2017-04-25 16:31:28.878
+!MESSAGE NLS unused message: DFDLXSDResourceBuilder_errorSchemaInAppImportSchemaInSharedLib in: com.ibm.etools.msg.builder.messages
+
+!ENTRY org.eclipse.osgi 2 1 2017-04-25 16:31:28.878
+!MESSAGE NLS unused message: DFDLXSDResourceBuilder_errorProjectReferenceIsMissing in: com.ibm.etools.msg.builder.messages
+!SESSION 2017-04-25 16:39:54.684 -----------------------------------------------
+eclipse.buildId=4.2.2.M20140918-1444
+java.fullversion=JRE 1.7.0 IBM J9 2.7 Windows 7 amd64-64 Compressed References 20150630_255653 (JIT enabled, AOT enabled)
+J9VM - R27_Java727_SR3_20150630_2236_B255653
+JIT  - tr.r13.java_20150623_94888.01
+GC   - R27_Java727_SR3_20150630_2236_B255653_CMPRSS
+J9CL - 20150630_255653
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -noupdate -application com.ibm.etools.mft.bar.cmdline.mqsicreatebar -b C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Oracle/workspace/PI177/Deployable/Test2/ORACLE_INVOICE_STATUS_25-April-2017.bar -a ORACLE_INVOICE_STATUS -l CallPiatService -deployAsSource -wmbtData
+Command-line arguments:  -noupdate -os win32 -ws win32 -application com.ibm.etools.mft.bar.cmdline.mqsicreatebar -data C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Oracle/workspace/PI177/Source/Test2 -b C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Oracle/workspace/PI177/Deployable/Test2/ORACLE_INVOICE_STATUS_25-April-2017.bar -a ORACLE_INVOICE_STATUS -l CallPiatService -deployAsSource -wmbtData
+
+!ENTRY org.eclipse.core.resources 2 10035 2017-04-25 16:39:58.372
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.emf.ecore 2 0 2017-04-25 16:39:58.953
+!MESSAGE Both 'com.ibm.etools.javaee.core' and 'com.ibm.etools.mft.service.model' register an extension parser for 'application'
+
+!ENTRY org.eclipse.osgi 2 1 2017-04-25 16:40:05.203
+!MESSAGE NLS missing message: Messages_EnumValue_BlockFinal_empty in: com.ibm.etools.msg.coremodel.utilities.messages
+
+!ENTRY org.eclipse.osgi 2 1 2017-04-25 16:40:06.317
+!MESSAGE NLS unused message: DFDLXSDResourceBuilder_errorSchemaInAppImportSchemaInSharedLib in: com.ibm.etools.msg.builder.messages
+
+!ENTRY org.eclipse.osgi 2 1 2017-04-25 16:40:06.319
+!MESSAGE NLS unused message: DFDLXSDResourceBuilder_errorProjectReferenceIsMissing in: com.ibm.etools.msg.builder.messages
+!SESSION 2017-04-25 16:49:36.558 -----------------------------------------------
+eclipse.buildId=4.2.2.M20140918-1444
+java.fullversion=JRE 1.7.0 IBM J9 2.7 Windows 7 amd64-64 Compressed References 20150630_255653 (JIT enabled, AOT enabled)
+J9VM - R27_Java727_SR3_20150630_2236_B255653
+JIT  - tr.r13.java_20150623_94888.01
+GC   - R27_Java727_SR3_20150630_2236_B255653_CMPRSS
+J9CL - 20150630_255653
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -noupdate -application com.ibm.etools.mft.bar.cmdline.mqsicreatebar -b C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Oracle/workspace/PI177/Deployable/Test2/ORACLE_INVOICE_STATUS_25-April-2017.bar -a ORACLE_INVOICE_STATUS -l CallPiatService -deployAsSource -wmbtData
+Command-line arguments:  -noupdate -os win32 -ws win32 -application com.ibm.etools.mft.bar.cmdline.mqsicreatebar -data C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Oracle/workspace/PI177/Source/Test2 -b C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Oracle/workspace/PI177/Deployable/Test2/ORACLE_INVOICE_STATUS_25-April-2017.bar -a ORACLE_INVOICE_STATUS -l CallPiatService -deployAsSource -wmbtData
+
+!ENTRY org.eclipse.core.resources 2 10035 2017-04-25 16:49:38.384
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.emf.ecore 2 0 2017-04-25 16:49:39.002
+!MESSAGE Both 'com.ibm.etools.javaee.core' and 'com.ibm.etools.mft.service.model' register an extension parser for 'application'
+
+!ENTRY org.eclipse.osgi 2 1 2017-04-25 16:49:45.377
+!MESSAGE NLS missing message: Messages_EnumValue_BlockFinal_empty in: com.ibm.etools.msg.coremodel.utilities.messages
+
+!ENTRY org.eclipse.osgi 2 1 2017-04-25 16:49:46.716
+!MESSAGE NLS unused message: DFDLXSDResourceBuilder_errorSchemaInAppImportSchemaInSharedLib in: com.ibm.etools.msg.builder.messages
+
+!ENTRY org.eclipse.osgi 2 1 2017-04-25 16:49:46.716
+!MESSAGE NLS unused message: DFDLXSDResourceBuilder_errorProjectReferenceIsMissing in: com.ibm.etools.msg.builder.messages
+!SESSION 2017-04-25 16:57:34.978 -----------------------------------------------
+eclipse.buildId=4.2.2.M20140918-1444
+java.fullversion=JRE 1.7.0 IBM J9 2.7 Windows 7 amd64-64 Compressed References 20150630_255653 (JIT enabled, AOT enabled)
+J9VM - R27_Java727_SR3_20150630_2236_B255653
+JIT  - tr.r13.java_20150623_94888.01
+GC   - R27_Java727_SR3_20150630_2236_B255653_CMPRSS
+J9CL - 20150630_255653
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -noupdate -application com.ibm.etools.mft.bar.cmdline.mqsicreatebar -b C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Oracle/workspace/PI177/Deployable/Test2/ORACLE_INVOICE_STATUS_25-April-2017.bar -a ORACLE_INVOICE_STATUS -l CallPiatService -deployAsSource -wmbtData
+Command-line arguments:  -noupdate -os win32 -ws win32 -application com.ibm.etools.mft.bar.cmdline.mqsicreatebar -data C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Oracle/workspace/PI177/Source/Test2 -b C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Oracle/workspace/PI177/Deployable/Test2/ORACLE_INVOICE_STATUS_25-April-2017.bar -a ORACLE_INVOICE_STATUS -l CallPiatService -deployAsSource -wmbtData
+
+!ENTRY org.eclipse.core.resources 2 10035 2017-04-25 16:57:36.838
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.emf.ecore 2 0 2017-04-25 16:57:37.179
+!MESSAGE Both 'com.ibm.etools.javaee.core' and 'com.ibm.etools.mft.service.model' register an extension parser for 'application'
+
+!ENTRY org.eclipse.osgi 2 1 2017-04-25 16:57:44.223
+!MESSAGE NLS missing message: Messages_EnumValue_BlockFinal_empty in: com.ibm.etools.msg.coremodel.utilities.messages
+
+!ENTRY org.eclipse.osgi 2 1 2017-04-25 16:57:45.940
+!MESSAGE NLS unused message: DFDLXSDResourceBuilder_errorSchemaInAppImportSchemaInSharedLib in: com.ibm.etools.msg.builder.messages
+
+!ENTRY org.eclipse.osgi 2 1 2017-04-25 16:57:45.942
+!MESSAGE NLS unused message: DFDLXSDResourceBuilder_errorProjectReferenceIsMissing in: com.ibm.etools.msg.builder.messages

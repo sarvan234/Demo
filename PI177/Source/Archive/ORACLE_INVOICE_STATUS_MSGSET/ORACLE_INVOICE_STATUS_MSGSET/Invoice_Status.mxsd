@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <xs:element name="INVOICES">
+        <xs:annotation>
+      <xs:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/INVOICES;XSDElementDeclaration$MRObject"/>
+      </xs:appinfo>
+    </xs:annotation>
+        <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="INVOICE">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="1" minOccurs="0" name="VENDOR_NUM">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element maxOccurs="1" minOccurs="0" name="VENDOR_SITE_CODE">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element maxOccurs="1" minOccurs="0" name="INVOICE_NUM">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element maxOccurs="1" minOccurs="0" name="VOUCHER_NUM">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SOURCE">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SOURCE_INVOICE_REF">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="INVOICE_STATUS">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element maxOccurs="1" minOccurs="0" name="IMPORT_ERROR_MESSAGE">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1000"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element maxOccurs="1" minOccurs="0" name="INVOICE_TOTAL" type="xs:string"/>
+              <xs:element maxOccurs="1" minOccurs="0" name="TOTAL_AMOUNT_PAID" type="xs:string"/>
+              <xs:element maxOccurs="1" minOccurs="0" name="PAID_FULLY_FLAG">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element maxOccurs="1" minOccurs="0" name="PAYMENTS">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="1" name="PAYMENT">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="1" minOccurs="0" name="PAYMENT_STATUS">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="10"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element maxOccurs="1" minOccurs="0" name="PAYMENT_DATE">
+						  <xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:pattern value="\d{4}-\d{1,2}-\d{1,2}"/>
+									</xs:restriction>
+								</xs:simpleType>
+						  </xs:element>
+                          <xs:element maxOccurs="1" minOccurs="0" name="PAYMENT_AMOUNT" type="xs:string"/>
+                          <xs:element maxOccurs="1" minOccurs="0" name="PAYMENT_NUMBER">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="15"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element maxOccurs="1" minOccurs="0" name="PAYMENT_CURRENCY">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:maxLength value="15"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element maxOccurs="1" minOccurs="0" name="VOID_DATE">
+						  <xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:pattern value="\d{4}-\d{1,2}-\d{1,2}"/>
+									</xs:restriction>
+							</xs:simpleType>
+						  </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="EXTRACTION_DATE" type="xs:dateTime"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
