@@ -678,3 +678,25 @@ Command-line arguments:  -noupdate -os win32 -ws win32 -application com.ibm.etoo
 
 !ENTRY org.eclipse.osgi 2 1 2017-05-12 15:20:12.874
 !MESSAGE NLS unused message: DFDLXSDResourceBuilder_errorProjectReferenceIsMissing in: com.ibm.etools.msg.builder.messages
+!SESSION 2017-05-12 15:22:08.571 -----------------------------------------------
+eclipse.buildId=4.2.2.M20140918-1444
+java.fullversion=JRE 1.7.0 IBM J9 2.7 Windows 7 amd64-64 Compressed References 20150630_255653 (JIT enabled, AOT enabled)
+J9VM - R27_Java727_SR3_20150630_2236_B255653
+JIT  - tr.r13.java_20150623_94888.01
+GC   - R27_Java727_SR3_20150630_2236_B255653_CMPRSS
+J9CL - 20150630_255653
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -noupdate -application com.ibm.etools.mft.bar.cmdline.mqsicreatebar -b C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Temp/workspace/PI001/Deployable/Dev/DUMMY_APP_12-May-2017.bar -a DUMMY_APP -deployAsSource -wmbtData
+Command-line arguments:  -noupdate -os win32 -ws win32 -application com.ibm.etools.mft.bar.cmdline.mqsicreatebar -data C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Temp/workspace/PI001/Source/Dev -b C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Temp/workspace/PI001/Deployable/Dev/DUMMY_APP_12-May-2017.bar -a DUMMY_APP -deployAsSource -wmbtData
+
+!ENTRY org.eclipse.core.resources 2 10035 2017-05-12 15:22:10.789
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.emf.ecore 2 0 2017-05-12 15:22:11.167
+!MESSAGE Both 'com.ibm.etools.javaee.core' and 'com.ibm.etools.mft.service.model' register an extension parser for 'application'
+
+!ENTRY org.eclipse.osgi 2 1 2017-05-12 15:22:17.986
+!MESSAGE NLS unused message: DFDLXSDResourceBuilder_errorSchemaInAppImportSchemaInSharedLib in: com.ibm.etools.msg.builder.messages
+
+!ENTRY org.eclipse.osgi 2 1 2017-05-12 15:22:17.991
+!MESSAGE NLS unused message: DFDLXSDResourceBuilder_errorProjectReferenceIsMissing in: com.ibm.etools.msg.builder.messages
