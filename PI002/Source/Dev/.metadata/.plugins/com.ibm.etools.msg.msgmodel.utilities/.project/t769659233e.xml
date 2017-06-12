@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><MRMessageSet id="DS40NF0002001" name="ORACLE_CoAMessageSet" parser="XMLNSC">
+  <MRMsgCollection href="platform:/resource/ORACLE_CoAMessageSet/ORACLE_CoAMessageSet/CoA_XSD_20170105.mxsd" prefix="" targetNamespace="">
+    <message href="platform:/resource/ORACLE_CoAMessageSet/ORACLE_CoAMessageSet/CoA_XSD_20170105.mxsd#/0/CHART_OF_ACCOUNTS;XSDElementDeclaration$MRMessage" name="CHART_OF_ACCOUNTS"/>
+    <message href="platform:/resource/ORACLE_CoAMessageSet/ORACLE_CoAMessageSet/CoA_XSD_20170105.mxsd#/0/XXPRI_BUSINESS_UNITS;XSDElementDeclaration=1$MRMessage" name="XXPRI_BUSINESS_UNITS"/>
+    <element href="platform:/resource/ORACLE_CoAMessageSet/ORACLE_CoAMessageSet/CoA_XSD_20170105.mxsd#/0/CHART_OF_ACCOUNTS;XSDElementDeclaration" name="CHART_OF_ACCOUNTS"/>
+    <element href="platform:/resource/ORACLE_CoAMessageSet/ORACLE_CoAMessageSet/CoA_XSD_20170105.mxsd#/0/XXPRI_BUSINESS_UNITS;XSDElementDeclaration=1" name="XXPRI_BUSINESS_UNITS" type="mset://ORACLE_CoAMessageSet#/-/complexType{}XXPRI_BUSINESS_UNITS"/>
+    <complexType baseType="mset://ORACLE_CoAMessageSet#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/ORACLE_CoAMessageSet/ORACLE_CoAMessageSet/CoA_XSD_20170105.mxsd#/0/XXPRI_BUSINESS_UNITS;XSDComplexTypeDefinition" name="XXPRI_BUSINESS_UNITS"/>
+  </MRMsgCollection>
+</MRMessageSet>
