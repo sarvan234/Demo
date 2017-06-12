@@ -1,0 +1,98 @@
+/*
+* Filename 	 ESB_PIAT_CoA_ACCOUNTS_CMF.esql
+* Modulename TransformAccountsXMLToJSONFile
+* Interfacename PI179 ORACLE_CoA
+* Date	      ProjectName       Name		    Version		    Description
+* 26/01/2017  ORACLE_CoA	 G Sugumar Raja		  0.1 	 Initial Version - Transforming Accounts XML data to JSON  
+														 data with Direct Mapping and Sending it to PIAT Server.
+* 04/07/2017  ORACLE_CoA	 G Sugumar Raja		  0.2 	 Transforming Accounts XML data to JSON  
+														 data with Business_Units as per the DOMD (v0.11)
+*/ 
+
+BROKER SCHEMA esb.primark.oracle
+
+DECLARE InterfaceId EXTERNAL CHARACTER '';
+
+CREATE COMPUTE MODULE ESB_PIAT_CoA_ACCOUNTS_CMF_CaptureBusinessData
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		 CALL CopyMessageHeaders();
+		 CALL CopyEntireMessage();
+		 SET Environment.Variables.BussinessInfo.MessageId = OutputRoot.MQRFH2.usr.UUID;
+		 PROPAGATE TO TERMINAL 'out1' DELETE NONE;
+		 SET Environment.Variables.InterfaceId = InterfaceId;
+		 PROPAGATE TO TERMINAL 'out' DELETE NONE;
+		 RETURN FALSE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;
+
+
+CREATE COMPUTE MODULE ESB_PIAT_CoA_ACCOUNTS_CMF_TransformAccountsXMLToJSONFile
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		 CALL CopyMessageHeaders();
+--		 CALL CopyEntireMessage();
+		 	-- Variables Declaration 
+		DECLARE inRef REFERENCE TO InputRoot.XMLNSC;
+		SET Environment.Variables.UUID = InputRoot.MQRFH2.usr.UUID ; -- For Audit Purpose.
+		 	 
+		-- Transforming Accounts data from XML Format to JSON Format as per the DOMD.
+		IF EXISTS(inRef.ACCOUNT[]) THEN	
+			DECLARE accountRef REFERENCE TO inRef.ACCOUNT;
+			CREATE FIELD OutputRoot.JSON.Data.changes IDENTITY(JSON.Array) changes; 
+		 	DECLARE accountdataRef REFERENCE TO OutputRoot.JSON.Data.changes;
+		 	CREATE FIRSTCHILD OF accountdataRef AS accountdataRef NAME 'Item' ;
+		 	SET accountdataRef.operation = 1;
+			SET accountdataRef.keyFields VALUE = null;
+			SET accountdataRef.ID VALUE = null;
+			CREATE FIELD accountdataRef.dataFields;
+			DECLARE accRef REFERENCE TO accountdataRef.dataFields;
+		
+			SET accRef.docid = '0';
+			SET accRef.oracle_account_code = accountRef.ORACLE_ACCOUNT_CODE;
+		 	SET accRef.oracle_account_description = accountRef.DESCRIPTION;
+		 	SET accRef.sun_account_code = NULLIF(accountRef.SUN_ACCOUNT_CODE,'');
+		 	SET accRef.account_type = accountRef.ACCOUNT_TYPE;
+		 	SET accRef.start_date_active = CAST (NULLIF(accountRef.START_DATE_ACTIVE,'') AS DATE FORMAT 'yyyy-MM-dd');
+		 	SET accRef.end_date_active = CAST (NULLIF(accountRef.END_DATE_ACTIVE,'') AS DATE FORMAT 'yyyy-MM-dd');
+		 	SET accRef.extraction_date = accountRef.EXTRACTION_DATE;
+		 	SET accRef.operating_unit = accountRef.BUSINESS_UNIT.ENTITY;
+		 	IF accountRef.BUSINESS_UNIT.ENABLED = 'N' THEN
+		 		SET accRef.enabled_flag = 'N';
+		 	ELSE
+		 		SET accRef.enabled_flag = accountRef.ENABLED_FLAG;
+		 	END IF;		
+ 		 	SET accRef.esb_insert_date_time = REPLACE(CAST(CURRENT_TIMESTAMP AS CHAR FORMAT 'yyyy-MM-dd HH:mm:ss') , ' ' , 'T'); 
+		 END IF;
+	
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;
