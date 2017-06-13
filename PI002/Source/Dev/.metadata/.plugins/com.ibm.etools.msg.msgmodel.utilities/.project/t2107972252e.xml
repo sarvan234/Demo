@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><MRMessageSet id="KO2N4A4002001" name="ORACLE_INVOICE_STATUS_MSGSET" parser="XMLNSC">
-  <MRMsgCollection href="platform:/resource/ORACLE_INVOICE_STATUS_MSGSET/ORACLE_INVOICE_STATUS_MSGSET/Invoice_Status.mxsd" prefix="" targetNamespace="">
+  
+<MRMsgCollection href="platform:/resource/ORACLE_INVOICE_STATUS_MSGSET/ORACLE_INVOICE_STATUS_MSGSET/Invoice_Status.mxsd" prefix="" targetNamespace="">
     <element href="platform:/resource/ORACLE_INVOICE_STATUS_MSGSET/ORACLE_INVOICE_STATUS_MSGSET/Invoice_Status.mxsd#/0/INVOICES;XSDElementDeclaration" name="INVOICES"/>
   </MRMsgCollection>
 </MRMessageSet>
