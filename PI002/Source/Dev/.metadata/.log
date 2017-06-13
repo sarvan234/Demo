@@ -120,3 +120,44 @@ Command-line arguments:  -noupdate -os win32 -ws win32 -application com.ibm.etoo
 
 !ENTRY org.eclipse.osgi 2 1 2017-06-13 10:48:42.974
 !MESSAGE NLS missing message: Messages_EnumValue_BlockFinal_empty in: com.ibm.etools.msg.coremodel.utilities.messages
+!SESSION 2017-06-13 11:01:31.659 -----------------------------------------------
+eclipse.buildId=4.2.2.M20140918-1444
+java.fullversion=JRE 1.7.0 IBM J9 2.7 Windows 7 amd64-64 Compressed References 20150630_255653 (JIT enabled, AOT enabled)
+J9VM - R27_Java727_SR3_20150630_2236_B255653
+JIT  - tr.r13.java_20150623_94888.01
+GC   - R27_Java727_SR3_20150630_2236_B255653_CMPRSS
+J9CL - 20150630_255653
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -noupdate -application com.ibm.etools.mft.bar.cmdline.mqsicreatebar -b C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Temp/workspace/PI002/Deployable/Dev/ESB_COMMON_LIBRARY_13-June-2017.bar -a ESB_COMMON_LIBRARY -deployAsSource -wmbtData
+Command-line arguments:  -noupdate -os win32 -ws win32 -application com.ibm.etools.mft.bar.cmdline.mqsicreatebar -data C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Temp/workspace/PI002/Source/Dev -b C:/Program Files (x86)/Jenkins/jobs/Bar_Build_Temp/workspace/PI002/Deployable/Dev/ESB_COMMON_LIBRARY_13-June-2017.bar -a ESB_COMMON_LIBRARY -deployAsSource -wmbtData
+
+!ENTRY org.eclipse.core.resources 2 10035 2017-06-13 11:01:33.442
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.emf.ecore 2 0 2017-06-13 11:01:33.874
+!MESSAGE Both 'com.ibm.etools.javaee.core' and 'com.ibm.etools.mft.service.model' register an extension parser for 'application'
+
+!ENTRY org.eclipse.core.jobs 4 2 2017-06-13 11:01:35.993
+!MESSAGE An internal error occurred during: "Initializing User-defined Node framework...".
+!STACK 0
+java.lang.ExceptionInInitializerError
+	at java.lang.J9VMInternals.ensureError(J9VMInternals.java:134)
+	at java.lang.J9VMInternals.recordInitializationFailure(J9VMInternals.java:123)
+	at com.ibm.etools.gef.emf.utility.impl.TranslatableStringImpl.getBundle(TranslatableStringImpl.java:232)
+	at com.ibm.etools.mft.node.UDNUIUtils.<clinit>(UDNUIUtils.java:422)
+	at com.ibm.etools.mft.node.NodeToolingPlugin$RemainingInitializationJob.run(NodeToolingPlugin.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: java.lang.IllegalStateException: BundleContext is no longer valid
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.checkValid(BundleContextImpl.java:931)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.createFilter(BundleContextImpl.java:917)
+	at org.osgi.util.tracker.ServiceTracker.<init>(ServiceTracker.java:184)
+	at org.eclipse.pde.internal.core.MinimalState.acquirePluginConverter(MinimalState.java:274)
+	at org.eclipse.pde.internal.core.MinimalState.addBundle(MinimalState.java:128)
+	at org.eclipse.pde.internal.core.PDEState.createNewTargetState(PDEState.java:160)
+	at org.eclipse.pde.internal.core.PDEState.readTargetState(PDEState.java:129)
+	at org.eclipse.pde.internal.core.PDEState.<init>(PDEState.java:101)
+	at org.eclipse.pde.internal.core.PluginModelManager.initializeTable(PluginModelManager.java:515)
+	at org.eclipse.pde.internal.core.PluginModelManager.getExternalModels(PluginModelManager.java:1027)
+	at com.ibm.etools.mft.uri.udn.UDNUtils.populateExternalModels(UDNUtils.java:110)
+	at com.ibm.etools.mft.uri.udn.UDNUtils.<clinit>(UDNUtils.java:92)
+	... 4 more
