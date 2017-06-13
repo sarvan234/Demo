@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>CallPiatService</name>
+	<name>AUDIT_ERROR_LIB</name>
 	<comment></comment>
 	<projects>
-		<project>ESB_COMMON_LIBRARY</project>
+		<project>Common_DatabaseLogging_MsgSet_ProjectLIB</project>
+		<project>FileLogging_MsgSetLIB</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -110,6 +111,5 @@
 	<natures>
 		<nature>com.ibm.etools.msgbroker.tooling.libraryNature</nature>
 		<nature>com.ibm.etools.msgbroker.tooling.messageBrokerProjectNature</nature>
-		<nature>com.ibm.etools.msgbroker.tooling.sharedLibraryNature</nature>
 	</natures>
 </projectDescription>
