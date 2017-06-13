@@ -341,10 +341,14 @@ CREATE COMPUTE MODULE EnhancedGenericErrorhandlerFlow_GenerateErrorAndEmailMessa
 				DECLARE rollbackRef REFERENCE TO OutputRoot.XMLNSC.RollbackMessage;
 				SET rollbackRef.MessageId = Environment.Variables.BussinessInfo.MessageId;
 				SET rollbackRef.ExceptionMessage = InputExceptionList;
-				SET rollbackRef.OriginalMessage = COALESCE(InputBody,Environment.Variables.OriginalMessage);
+				IF EXISTS(Environment.Variables.OriginalMessage[]) THEN
+					SET rollbackRef.OriginalMessage = Environment.Variables.OriginalMessage;
+				ELSE
+					SET rollbackRef.OriginalMessage = InputBody;	
+				END IF;
 				SET OutputLocalEnvironment.Destination.MQ.DestinationData[1].queueName = 'ESB.USER.'||TRIM(InterfaceId)||'.BAK';
 				PROPAGATE TO TERMINAL 'out2' DELETE NONE;
-				DELETE FIELD OutputRoot.XMLNSC; 
+				DELETE FIELD OutputRoot.XMLNSC;
 			END IF;
 
 		-- Generating the Email Output message 
