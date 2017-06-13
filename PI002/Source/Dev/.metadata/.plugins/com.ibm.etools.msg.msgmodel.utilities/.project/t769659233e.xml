@@ -10,6 +10,7 @@
 
 
 
+
 <MRMsgCollection href="platform:/resource/ORACLE_CoAMessageSet/ORACLE_CoAMessageSet/CoA_XSD_20170105.mxsd" prefix="" targetNamespace="">
     <message href="platform:/resource/ORACLE_CoAMessageSet/ORACLE_CoAMessageSet/CoA_XSD_20170105.mxsd#/0/CHART_OF_ACCOUNTS;XSDElementDeclaration$MRMessage" name="CHART_OF_ACCOUNTS"/>
     <message href="platform:/resource/ORACLE_CoAMessageSet/ORACLE_CoAMessageSet/CoA_XSD_20170105.mxsd#/0/XXPRI_BUSINESS_UNITS;XSDElementDeclaration=1$MRMessage" name="XXPRI_BUSINESS_UNITS"/>
