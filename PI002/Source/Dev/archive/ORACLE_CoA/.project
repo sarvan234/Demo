@@ -5,6 +5,7 @@
 	<projects>
 		<project>ORACLE_CoAMessageSet</project>
 		<project>CallPiatService</project>
+		<project>AUDIT_ERROR_LIB</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

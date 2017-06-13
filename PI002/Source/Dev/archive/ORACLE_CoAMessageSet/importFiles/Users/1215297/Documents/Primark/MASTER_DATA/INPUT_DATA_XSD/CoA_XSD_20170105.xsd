@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:complexType name="XXPRI_BUSINESS_UNITS">
+   <xs:sequence>
+      <xs:element name="BUSINESS_UNIT" minOccurs="0" maxOccurs="unbounded">
+         <xs:complexType>
+            <xs:sequence>
+               <xs:element name="ENTITY">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:maxLength value = "30"/>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element name="ENABLED">
+                  <xs:simpleType>
+                     <xs:restriction base="xs:string">
+                        <xs:maxLength value = "1"/>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+            </xs:sequence>
+         </xs:complexType>
+      </xs:element>
+   </xs:sequence>
+</xs:complexType>
+
+<xs:element name="CHART_OF_ACCOUNTS">
+   <xs:complexType>
+      <xs:sequence>
+         <xs:element name="ACCOUNTS"  minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="ACCOUNT" minOccurs="0" maxOccurs="unbounded">
+                     <xs:complexType>
+                        <xs:sequence>
+                           <xs:element name="ORACLE_ACCOUNT_CODE">
+                                <xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "30"/>
+			            </xs:restriction>
+                                </xs:simpleType>                           
+                           </xs:element>
+                           <xs:element name="DESCRIPTION">
+                                <xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "240"/>
+			            </xs:restriction>
+                                </xs:simpleType>                          
+                           </xs:element>
+                           <xs:element name="ENABLED_FLAG">
+                                <xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "1"/>
+			            </xs:restriction>
+                                </xs:simpleType>                          
+                           </xs:element>
+						<xs:element name="START_DATE_ACTIVE" type="xs:date"></xs:element>
+                          
+						  <xs:element name="END_DATE_ACTIVE" minOccurs="0">
+							<xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "10"/>
+			            </xs:restriction>
+                               </xs:simpleType>  
+						  </xs:element>
+                           <xs:element name="ACCOUNT_TYPE">
+                                <xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "2"/>
+			            </xs:restriction>
+                                </xs:simpleType>           
+                           </xs:element>
+                           <xs:element name="SUN_ACCOUNT_CODE" minOccurs="0">
+                                <xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "30"/>
+			            </xs:restriction>
+                                </xs:simpleType>           
+                           </xs:element>
+                           <xs:element name="BUSINESS_UNITS" type="XXPRI_BUSINESS_UNITS" minOccurs="0"  maxOccurs="1"></xs:element>
+                           <xs:element name="EXTRACTION_DATE" type="xs:dateTime"></xs:element>
+                        </xs:sequence>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="PROJECTS" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="PROJECT" minOccurs="0" maxOccurs="unbounded">
+                     <xs:complexType>
+                        <xs:sequence>
+                           <xs:element name="ORACLE_PROJECT_CODE">
+                                <xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "30"/>
+			            </xs:restriction>
+                                </xs:simpleType>           
+                           </xs:element>
+                           <xs:element name="DESCRIPTION">
+                                <xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "240"/>
+			            </xs:restriction>
+                                </xs:simpleType>           
+                           </xs:element>
+                           <xs:element name="ENABLED_FLAG">
+                                <xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "1"/>
+			            </xs:restriction>
+                                </xs:simpleType>           
+                           </xs:element>
+                           <xs:element name="START_DATE_ACTIVE" type="xs:date"></xs:element>
+                          
+						  <xs:element name="END_DATE_ACTIVE" minOccurs="0">
+							<xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "10"/>
+			            </xs:restriction>
+                               </xs:simpleType>  
+						  </xs:element>
+                           <xs:element name="SUN_PROJECT" minOccurs="0">
+                                <xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "30"/>
+			            </xs:restriction>
+                                </xs:simpleType>           
+                           </xs:element>
+                           <xs:element name="CIP_FLAG" minOccurs="0"  maxOccurs="1">
+                                <xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "1"/>
+			            </xs:restriction>
+                                </xs:simpleType>           
+                           </xs:element>
+                           <xs:element name="BUSINESS_UNITS" type="XXPRI_BUSINESS_UNITS" minOccurs="0"  maxOccurs="1"></xs:element>
+                           <xs:element name="EXTRACTION_DATE" type="xs:dateTime"></xs:element>
+                        </xs:sequence>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="LOCATIONS" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="LOCATION" minOccurs="0" maxOccurs="unbounded">
+                     <xs:complexType>
+                        <xs:sequence>
+                           <xs:element name="ORACLE_LOCATION_CODE">
+                                <xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "30"/>
+			            </xs:restriction>
+                                </xs:simpleType>           
+                           </xs:element>
+                           <xs:element name="DESCRIPTION">
+                                <xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "240"/>
+			            </xs:restriction>
+                                </xs:simpleType>           
+                           </xs:element>
+                           <xs:element name="ENABLED_FLAG">
+                                <xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "1"/>
+			            </xs:restriction>
+                                </xs:simpleType>           
+                           </xs:element>
+                          <xs:element name="START_DATE_ACTIVE" type="xs:date"></xs:element>
+                          
+						  <xs:element name="END_DATE_ACTIVE" minOccurs="0">
+							<xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "10"/>
+			            </xs:restriction>
+                               </xs:simpleType>  
+						  </xs:element>
+                           <xs:element name="SUN_LOCATION" minOccurs="0" maxOccurs="1">
+                                <xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "30"/>
+			            </xs:restriction>
+                                </xs:simpleType>           
+                           </xs:element>
+                           <xs:element name="BUSINESS_UNITS" type="XXPRI_BUSINESS_UNITS" minOccurs="0"  maxOccurs="1"></xs:element>
+                           <xs:element name="EXTRACTION_DATE" type="xs:dateTime"></xs:element>
+                        </xs:sequence>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="COST_CENTRES" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="COST_CENTRE" minOccurs="0" maxOccurs="unbounded">
+                     <xs:complexType>
+                        <xs:sequence>
+                           <xs:element name="ORACLE_COST_CENTRE_CODE">
+                                <xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "30"/>
+			            </xs:restriction>
+                                </xs:simpleType>           
+                           </xs:element>
+                           <xs:element name="DESCRIPTION">
+                                <xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "240"/>
+			            </xs:restriction>
+                                </xs:simpleType>           
+                           </xs:element>
+                           <xs:element name="ENABLED_FLAG">
+                                <xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "1"/>
+			            </xs:restriction>
+                                </xs:simpleType>           
+                           </xs:element>
+                         <xs:element name="START_DATE_ACTIVE" type="xs:date"></xs:element>
+                          
+						  <xs:element name="END_DATE_ACTIVE" minOccurs="0">
+							<xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "10"/>
+			            </xs:restriction>
+                               </xs:simpleType>  
+						  </xs:element>
+                           <xs:element name="SUN_COST_CENTRE" minOccurs="0" maxOccurs="1">
+                                <xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "30"/>
+			            </xs:restriction>
+                                </xs:simpleType>
+                           </xs:element>
+                           <xs:element name="BUSINESS_UNITS" type="XXPRI_BUSINESS_UNITS" minOccurs="0"  maxOccurs="1"></xs:element>
+                           <xs:element name="EXTRACTION_DATE" type="xs:dateTime"></xs:element>
+                        </xs:sequence>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+                               
+         <xs:element name="CROSS_VALIDATION_RULES" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="CROSS_VALIDATION_RULE" minOccurs="0" maxOccurs="unbounded">
+                     <xs:complexType>
+                        <xs:sequence>
+                           <xs:element name="RULE_NAME">
+                                <xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "30"/>
+			            </xs:restriction>
+                                </xs:simpleType>
+                           </xs:element>
+                           <xs:element name="DESCRIPTION" minOccurs="0" maxOccurs="1">
+                                <xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "240"/>
+			            </xs:restriction>
+                                </xs:simpleType>
+                           </xs:element>
+                           <xs:element name="ENABLED_FLAG">
+                                <xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "1"/>
+			            </xs:restriction>
+                                </xs:simpleType>
+                           </xs:element>
+                          <xs:element name="START_DATE_ACTIVE" type="xs:date"></xs:element>
+                          
+						  <xs:element name="END_DATE_ACTIVE" minOccurs="0">
+							<xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "10"/>
+			            </xs:restriction>
+                               </xs:simpleType>  
+						  </xs:element>
+                           <xs:element name="ERROR_MESSAGE">
+                                <xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "240"/>
+			            </xs:restriction>
+                                </xs:simpleType>
+                           </xs:element>
+                           <xs:element name="ERROR_SEGMENT" minOccurs="0" maxOccurs="1">
+                                <xs:simpleType>
+			            <xs:restriction base="xs:string">
+			                <xs:maxLength value = "30"/>
+			            </xs:restriction>
+                                </xs:simpleType>
+                           </xs:element>
+                           <xs:element name="RULE_ELEMENTS">
+                              <xs:complexType>
+                                 <xs:sequence>
+                                    <xs:element name="RULE_ELEMENT" minOccurs="0" maxOccurs="unbounded">
+                                       <xs:complexType>
+                                          <xs:sequence>
+                                             <xs:element name="TYPE">
+                                                <xs:simpleType>
+			                           <xs:restriction base="xs:string">
+			                              <xs:maxLength value = "1"/>
+			                           </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:element>
+                                             <xs:element name="ENABLED_FLAG">
+                                                <xs:simpleType>
+			                           <xs:restriction base="xs:string">
+			                              <xs:maxLength value = "1"/>
+			                           </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:element>
+                                             <xs:element name="FROM_CODE_COMBINATION">
+                                                <xs:simpleType>
+			                           <xs:restriction base="xs:string">
+			                              <xs:maxLength value = "240"/>
+			                           </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:element>
+                                             <xs:element name="TO_CODE_COMBINATION">
+                                                <xs:simpleType>
+			                           <xs:restriction base="xs:string">
+			                              <xs:maxLength value = "240"/>
+			                           </xs:restriction>
+                                                </xs:simpleType>
+                                             </xs:element>
+                                          </xs:sequence>
+                                       </xs:complexType>
+                                    </xs:element>
+                                 </xs:sequence>
+                              </xs:complexType>
+                           </xs:element>
+                           <xs:element name="EXTRACTION_DATE" type="xs:dateTime"></xs:element>
+                        </xs:sequence>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+</xs:element>
+</xs:schema>
