@@ -1,2 +1,2 @@
 eclipse.preferences.version=1
-task-tag-projects-already-scanned=CallPiatService,ORACLE_CoA,ORACLE_CoAMessageSet
+task-tag-projects-already-scanned=CallPiatService,ORACLE_CoA,ORACLE_CoAMessageSet,AUDIT_ERROR_LIB,ESB_COMMON_LIBRARY

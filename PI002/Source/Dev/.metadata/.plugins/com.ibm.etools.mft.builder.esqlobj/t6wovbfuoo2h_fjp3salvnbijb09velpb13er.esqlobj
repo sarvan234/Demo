@@ -1,0 +1,55 @@
+CREATE COMPUTE MODULE ComposeServiceCall
+	
+		CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		CREATE FIELD OutputLocalEnvironment.Destination.HTTP;
+		DECLARE refURL REFERENCE TO OutputLocalEnvironment.Destination.HTTP;
+		
+		CREATE FIRSTCHILD OF Environment.Variables.Payload DOMAIN 'JSON'  NAME 'JSON'; 
+		SET Environment.Variables.Payload.JSON = InputRoot.JSON;
+
+		-- If Session_Id exists then Sending Payload Data with existing Session Id. 
+		IF EXISTS(CACHE.Session_Id[]) THEN 
+			SET OutputRoot.HTTPInputHeader.Authorization = 'Basic sessionId=' ||CACHE.Session_Id ;
+			SET Environment.Variables.SessionId = CACHE.Session_Id ; -- For Audit Purpose
+			SET OutputRoot.JSON = Environment.Variables.Payload.JSON;
+			set refURL.RequestURL= RequestURL;
+		 	PROPAGATE to TERMINAL 'out' DELETE NONE ;
+		ELSE
+		-- Authenticating and Retrieving the Session ID.
+		 	SET OutputRoot.JSON.Data.username = UserName;
+		 	SET OutputRoot.JSON.Data.password = Password;
+		 	SET refURL.RequestURL = LoginURL;
+		 	PROPAGATE to TERMINAL 'out' DELETE NONE;
+		 -- Sending Payload Data with the Retrieved Session Id.	
+			SET OutputRoot.HTTPInputHeader.Authorization = 'Basic sessionId=' ||CACHE.Session_Id ;
+			DELETE FIELD OutputRoot.JSON;
+			CREATE FIELD OutputRoot.JSON;
+			SET OutputRoot.JSON = Environment.Variables.Payload.JSON;
+			set refURL.RequestURL= RequestURL;
+			PROPAGATE to TERMINAL 'out' DELETE NONE;
+		END IF;
+		
+		-- If the Session ID expired then Authenticating again to Retrieve new Session ID.
+		IF (Environment.Variables.responsecode = '401' )THEN
+	 		DELETE FIELD CACHE.Session_Id;
+	 		DELETE FIELD OutputRoot.JSON.Data.changes;
+	 		SET OutputRoot.JSON.Data.username =  UserName;
+ 			SET OutputRoot.JSON.Data.password = Password;
+ 			SET refURL.RequestURL = LoginURL;
+ 			PROPAGATE to TERMINAL 'out' DELETE NONE;
+ 		-- Sending Payload Data with the Retrieved Session Id.
+			DELETE FIELD OutputRoot.JSON;	
+			SET OutputRoot.HTTPInputHeader.Authorization = 'Basic sessionId=' ||CACHE.Session_Id ;
+			CREATE FIELD OutputRoot.JSON;
+			SET OutputRoot.JSON = Environment.Variables.Payload.JSON;
+			set refURL.RequestURL= RequestURL;
+			PROPAGATE to TERMINAL 'out' DELETE NONE;	 	
+		END IF;	
+		RETURN FALSE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;
