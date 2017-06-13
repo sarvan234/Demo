@@ -3,6 +3,7 @@
 	<name>CallPiatService</name>
 	<comment></comment>
 	<projects>
+		<project>ESB_COMMON_LIBRARY</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>ORACLE_CoA</name>
+	<name>AUDIT_ERROR_LIB</name>
 	<comment></comment>
 	<projects>
-		<project>ORACLE_CoAMessageSet</project>
-		<project>CallPiatService</project>
-		<project>AUDIT_ERROR_LIB</project>
+		<project>Common_DatabaseLogging_MsgSet_ProjectLIB</project>
+		<project>FileLogging_MsgSetLIB</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -20,6 +19,21 @@
 		</buildCommand>
 		<buildCommand>
 			<name>com.ibm.etools.mft.connector.policy.ui.PolicyBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.connector.ui.editor.connectorServiceBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.connector.ui.editor.connectorEventBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.ibm.etools.mft.uri.sharedlibbuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -95,7 +109,7 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>com.ibm.etools.msgbroker.tooling.applicationNature</nature>
+		<nature>com.ibm.etools.msgbroker.tooling.libraryNature</nature>
 		<nature>com.ibm.etools.msgbroker.tooling.messageBrokerProjectNature</nature>
 	</natures>
 </projectDescription>
