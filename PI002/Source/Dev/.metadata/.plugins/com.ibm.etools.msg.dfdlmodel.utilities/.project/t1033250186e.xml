@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><MessageBroker name="ORACLE_CoA">
-  <XSDCollection href="platform:/resource/ORACLE_CoA/CoA_XSD_20170105.xsd" prefix="" targetNamespace="">
-    <element href="platform:/resource/ORACLE_CoA/CoA_XSD_20170105.xsd#//CHART_OF_ACCOUNTS;XSDElementDeclaration" name="CHART_OF_ACCOUNTS"/>
-    <complexType baseType="mlib://ORACLE_CoA#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/ORACLE_CoA/CoA_XSD_20170105.xsd#//XXPRI_BUSINESS_UNITS;XSDComplexTypeDefinition" name="XXPRI_BUSINESS_UNITS"/>
-  </XSDCollection>
-</MessageBroker>

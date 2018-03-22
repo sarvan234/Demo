@@ -1,1 +1,0 @@
-fteCreateTransfer -p QDD1MFT1 -sa JENKINS_SCRIPT2 -sm QDD1MFT1 -da FTE_LOCAL_FTP -dm QDD1MFT1 -sd leave -postdst executable:/home/mqm/Script/DUMMY_APP/Post_Destination_MFT_SCHEDULER_SCRIPT2.sh -jn MFT_SCHEDULER_SCRIPT2 -ss 06:00 -tb source -oi minutes -of 30 -dd /home/mqm/Test/ /home/mqm/Test/*.txt
