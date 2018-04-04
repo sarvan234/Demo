@@ -4,6 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>Sample_Lib</project>
+		<project>ESB_COMMON_LIBRARY</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
