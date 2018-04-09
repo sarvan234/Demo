@@ -4,7 +4,8 @@
 	<comment></comment>
 	<projects>
 		<project>Sample_Lib</project>
-<project>Trial_Lib</project>
+		<project>Sample_Messageset</project>
+		<project>Trial_Lib</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
