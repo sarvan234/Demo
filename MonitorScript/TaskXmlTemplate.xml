@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><request version="6.00" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="FileTransfer.xsd">
+          <managedTransfer>
+            <originator>
+              <hostName>HstName</hostName>
+              <userID>UsrId</userID>
+            </originator>
+            <sourceAgent QMgr="SrcQmgr" agent="SrcAgent"/>
+            <destinationAgent QMgr="DestQmgr" agent="DestAgent"/>
+            <transferSet priority="0">
+			
+			<preSourceCall>  
+			<command name="PreSrcScript" retryCount="0" retryWait="0" successRC="0" type="executable">
+			</command>
+			</preSourceCall> 
+			
+			<postDestinationCall>  
+			<command name="PostDestScript" retryCount="0" retryWait="0" successRC="0" type="executable">
+			</command>
+			</postDestinationCall> 
+			
+              <item checksumMethod="MD5" mode="binary">
+                <source disposition="Dispositon" recursive="false">
+                  <file>Src</file>
+                </source>
+                <destination exist="Exsts" type="directory">
+                  <file>Dest</file>
+                </destination>
+              </item>
+			  
+            </transferSet>
+            <job>
+              <name>JobName</name>
+            </job>
+          </managedTransfer>
+        </request>
