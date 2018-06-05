@@ -9,12 +9,22 @@
             <transferSet priority="0">
 			
 			<preSourceCall>  
-			<command name="PreSrcScript" retryCount="0" retryWait="0" successRC="0" type="executable">
+			<command name="PreSrcScript" retryCount="0" retryWait="0" successRC="0" type="PreSrcTyp">
 			</command>
 			</preSourceCall> 
 			
-			<postDestinationCall>  
-			<command name="PostDestScript" retryCount="0" retryWait="0" successRC="0" type="executable">
+			<postSourceCall>  
+			<command name="PostSrcScript" retryCount="0" retryWait="0" successRC="0" type="PostSrcTyp">
+			</command>
+			</postSourceCall> 
+			
+			<preDestinationCall>  
+			<command name="PreDestScript" retryCount="0" retryWait="0" successRC="0" type="PreDestTyp">
+			</command>
+			</postDestinationCall> 
+			
+			<preDestinationCall>  
+			<command name="PostDestScript" retryCount="0" retryWait="0" successRC="0" type="PostDestTyp">
 			</command>
 			</postDestinationCall> 
 			
