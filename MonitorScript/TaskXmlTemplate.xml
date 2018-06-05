@@ -21,9 +21,9 @@
 			<preDestinationCall>  
 			<command name="PreDestScript" retryCount="0" retryWait="0" successRC="0" type="PreDestTyp">
 			</command>
-			</postDestinationCall> 
+			</preDestinationCall> 
 			
-			<preDestinationCall>  
+			<postDestinationCall>  
 			<command name="PostDestScript" retryCount="0" retryWait="0" successRC="0" type="PostDestTyp">
 			</command>
 			</postDestinationCall> 
