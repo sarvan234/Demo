@@ -8,6 +8,11 @@
             <destinationAgent QMgr="QDL1MFT1" agent="TERADATA_001_CLIENT_AGENT"/>
             <transferSet priority="0">
 			
+			<preDestinationCall>  
+			<command name="TERADATA001_PI226_IPP_PreSourceCall.sh" retryCount="0" retryWait="0" successRC="0" type="executable">
+			</command>
+			</preDestinationCall> 
+			
 			<postDestinationCall>  
 			<command name="TERADATA001_PI226_IPP_PreSourceCall.sh" retryCount="0" retryWait="0" successRC="0" type="executable">
 			</command>
