@@ -1,0 +1,3 @@
+sudo su - mqm
+cp /var/mqsi/applog/* /home/gsugumar/
+chmod 777 /home/gsugumar/*
